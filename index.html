@@ -4,1077 +4,636 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>فلورا إكسكويزيت | متجر الورد والهدايا الفاخرة - الجزائر</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com">
-    </script>
-    
-    <!-- GSAP + الإضافات -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js">
-    </script>
-    
-    <!-- Lenis للتمرير السلس -->
-    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js">
-    </script>
-    
-    <!-- Three.js -->
-    <script type="importmap">
-        {
-            "imports": {
-                "three": "https://unpkg.com/three@0.157.0/build/three.module.js",
-                "three/addons/": "https://unpkg.com/three@0.157.0/examples/jsm/"
-            }
-        }
-    </script>
-    
-    <!-- خطوط Google -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=El+Messiri:wght@400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --bg: #0a0a0b;
-            --bg-secondary: #111113;
-            --bg-card: #161618;
-            --bg-card-hover: #1c1c1f;
-            --surface: #1a1a1d;
-            --surface-light: #222225;
-            --accent: #c4a882;
-            --accent-soft: #b8996e;
-            --accent-light: #d4c4ab;
-            --accent-glow: rgba(196, 168, 130, 0.15);
-            --accent-glow-strong: rgba(196, 168, 130, 0.25);
-            --rose: #c4a0a0;
-            --rose-soft: rgba(196, 160, 160, 0.2);
-            --sage: #a0b4a0;
-            --sage-soft: rgba(160, 180, 160, 0.2);
-            --lavender: #b0a0b8;
-            --lavender-soft: rgba(176, 160, 184, 0.2);
-            --text: #e8e4df;
-            --text-soft: #c4bfb8;
-            --text-dim: #8a847c;
-            --text-muted: #5c5852;
-            --border: #222225;
-            --border-light: #2a2a2e;
-            --border-accent: rgba(196, 168, 130, 0.2);
-            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
-            --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.5);
-            --shadow-xl: 0 32px 64px rgba(0, 0, 0, 0.6);
-            --shadow-gold: 0 8px 32px rgba(196, 168, 130, 0.1);
-            --shadow-gold-lg: 0 16px 48px rgba(196, 168, 130, 0.15);
+            --gold: #c4a882; --gold-light: #d4c4ab; --gold-dark: #a0845c; --gold-glow: rgba(196,168,130,0.15);
+            --dark: #0a0a0b; --dark2: #111113; --card: #161618; --card2: #1c1c1f; --card3: #222225;
+            --text: #e8e4df; --text2: #c4bfb8; --text3: #8a847c; --text4: #5c5852;
+            --border: #222225; --border2: #2a2a2e; --border3: #333338;
+            --rose: #c4a0a0; --rose-soft: rgba(196,160,160,0.15);
+            --sage: #a0b4a0; --sage-soft: rgba(160,180,160,0.15);
+            --lavender: #b0a0b8; --lavender-soft: rgba(176,160,184,0.15);
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.4);
+            --shadow-lg: 0 20px 48px rgba(0,0,0,0.5);
+            --shadow-gold: 0 8px 32px rgba(196,168,130,0.1);
+            --radius-sm: 16px; --radius: 24px; --radius-lg: 32px; --radius-xl: 40px;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            overflow-x: hidden;
-            cursor: none;
-        }
-
-        .arabic { font-family: 'Noto Naskh Arabic', serif; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Noto Naskh Arabic', serif; background: var(--dark); color: var(--text); overflow-x: hidden; line-height: 1.7; }
         .serif { font-family: 'Cormorant Garamond', serif; }
-        .playfair { font-family: 'Playfair Display', serif; }
+        .amiri { font-family: 'Amiri', serif; }
+        .messiri { font-family: 'El Messiri', sans-serif; }
 
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--bg); }
-        ::-webkit-scrollbar-thumb { background: var(--surface-light); border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
-
-        #cursor {
-            width: 32px; height: 32px;
-            border: 2px solid var(--accent);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 99999;
-            transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                        height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                        border-color 0.4s ease, background 0.4s ease;
-            mix-blend-mode: normal;
-        }
-        #cursor-dot {
-            width: 6px; height: 6px;
-            background: var(--accent);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 99999;
-            box-shadow: 0 0 16px var(--accent-glow-strong);
-        }
-        #cursor.hover {
-            width: 80px; height: 80px;
-            background: var(--accent-glow);
-            border-color: var(--accent-light);
-        }
-
-        #preloader {
-            position: fixed; inset: 0;
-            background: var(--bg);
-            z-index: 100000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 1s ease, visibility 1s ease;
-        }
-        #preloader.hidden { opacity: 0; visibility: hidden; }
-
-        .toast {
-            position: fixed; bottom: 30px; left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: var(--bg-card);
-            border: 1px solid var(--accent);
-            color: var(--accent-light);
-            padding: 16px 32px;
-            border-radius: 50px;
-            z-index: 100001;
-            font-size: 14px; letter-spacing: 1px;
-            box-shadow: var(--shadow-gold-lg);
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            pointer-events: none;
-        }
-        .toast.show { transform: translateX(-50%) translateY(0); }
-
-        .modal-overlay {
-            position: fixed; inset: 0;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 100002;
-            display: flex;
-            align-items: center; justify-content: center;
-            opacity: 0; visibility: hidden;
-            transition: all 0.4s ease;
-        }
-        .modal-overlay.active { opacity: 1; visibility: visible; }
-        .modal {
-            background: var(--bg-card);
-            border: 1px solid var(--border-accent);
-            border-radius: 24px;
-            padding: 40px;
-            max-width: 500px; width: 90%;
-            text-align: center;
-            transform: scale(0.9);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .modal-overlay.active .modal { transform: scale(1); }
-
-        /* Product Image Container */
-        .product-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .product-image-container {
-            position: relative;
-            overflow: hidden;
-        }
-        .product-image-container:hover .product-image {
-            transform: scale(1.08);
-        }
-        .product-image-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(22,22,24,0.8) 0%, rgba(22,22,24,0.2) 50%, transparent 100%);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        .product-image-container:hover .product-image-overlay {
-            opacity: 1;
-        }
-
-        .glass-panel {
-            background: rgba(22, 22, 24, 0.8);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid var(--border);
+        /* شريط التنقل المحسن */
+        .navbar { 
+            background: rgba(10,10,11,0.9); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+            border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000;
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: var(--shadow-sm);
         }
-        .glass-panel:hover {
-            background: rgba(28, 28, 31, 0.9);
-            border-color: var(--border-accent);
-            box-shadow: var(--shadow-lg), var(--shadow-gold);
-            transform: translateY(-4px);
+        .navbar.scrolled { background: rgba(10,10,11,0.97); box-shadow: 0 4px 40px rgba(0,0,0,0.6); }
+        .nav-link { 
+            color: var(--text3); text-decoration: none; padding: 8px 16px; border-radius: 10px;
+            transition: all 0.35s ease; font-size: 13.5px; cursor: pointer; background: none; border: none;
+            font-family: 'Noto Naskh Arabic', serif; position: relative; white-space: nowrap; letter-spacing: 0.3px;
         }
-
-        .magnetic-wrap { display: inline-block; position: relative; }
-        .elegant-btn {
-            display: inline-block;
-            padding: 16px 40px;
-            background: linear-gradient(135deg, var(--accent), #a0845c);
-            border: none;
-            color: #1a1a1d;
-            border-radius: 50px;
-            font-size: 14px; letter-spacing: 2px; font-weight: 500;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative; overflow: hidden;
-            box-shadow: 0 8px 24px rgba(196, 168, 130, 0.2);
-            cursor: pointer;
-        }
-        .elegant-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 16px 40px rgba(196, 168, 130, 0.35);
-            color: #0a0a0b;
-        }
-        .elegant-btn span { position: relative; z-index: 1; }
-        
-        .elegant-btn-outline {
-            display: inline-block;
-            padding: 16px 40px;
-            background: transparent;
-            border: 1.5px solid var(--accent);
-            color: var(--accent);
-            border-radius: 50px;
-            font-size: 14px; letter-spacing: 2px; font-weight: 500;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            cursor: pointer;
-        }
-        .elegant-btn-outline:hover {
-            color: #0a0a0b; border-color: transparent;
-            transform: translateY(-3px);
-            box-shadow: 0 16px 40px rgba(196, 168, 130, 0.3);
-            background: linear-gradient(135deg, var(--accent), #a0845c);
+        .nav-link:hover { color: var(--gold-light); background: rgba(196,168,130,0.06); }
+        .nav-link.active { color: var(--gold); background: rgba(196,168,130,0.1); font-weight: 600; }
+        .nav-link.active::after {
+            content: ''; position: absolute; bottom: 0; left: 20%; right: 20%; height: 2px;
+            background: var(--gold); border-radius: 2px;
         }
 
-        .reveal-line { overflow: hidden; }
-        .reveal-line span {
-            display: block;
-            transform: translateY(100%);
-            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal-line.visible span { transform: translateY(0); }
+        /* الصفحات */
+        .page { display: none; min-height: 100vh; animation: fadeSlide 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .page.active { display: block; }
+        @keyframes fadeSlide { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 
-        .card-3d-wrap { perspective: 1200px; }
-        .card-3d {
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            transform-style: preserve-3d; position: relative;
+        /* أزرار */
+        .btn-gold { 
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: #0a0a0b;
+            padding: 14px 36px; border-radius: 50px; font-weight: 700; border: none; cursor: pointer;
+            transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1); font-family: 'Noto Naskh Arabic', serif;
+            text-decoration: none; display: inline-block; text-align: center; letter-spacing: 0.5px;
+            box-shadow: 0 8px 28px rgba(196,168,130,0.2); position: relative; overflow: hidden;
         }
+        .btn-gold::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
+        }
+        .btn-gold:hover::before { left: 100%; }
+        .btn-gold:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(196,168,130,0.35); }
+        .btn-outline-gold { 
+            background: transparent; color: var(--gold); padding: 14px 36px; border-radius: 50px;
+            border: 2px solid var(--gold); font-weight: 600; cursor: pointer;
+            transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1); font-family: 'Noto Naskh Arabic', serif;
+            text-decoration: none; display: inline-block; text-align: center;
+        }
+        .btn-outline-gold:hover { background: var(--gold); color: #0a0a0b; transform: translateY(-4px); box-shadow: 0 12px 32px rgba(196,168,130,0.25); }
+        .btn-sm { padding: 8px 22px; font-size: 12px; }
+        .btn-lg { padding: 18px 44px; font-size: 16px; }
 
-        .divider-line {
-            width: 100px; height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-        }
+        /* بطاقات زجاجية */
+        .glass-card { background: var(--card); border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .glass-card:hover { border-color: rgba(196,168,130,0.35); transform: translateY(-8px); box-shadow: var(--shadow-lg), 0 0 0 1px rgba(196,168,130,0.08); }
+        .glass-card-sm { border-radius: var(--radius-sm); }
+        .glass-card-lg { border-radius: var(--radius-lg); }
 
-        .page {
-            display: none; opacity: 0;
-            transition: opacity 0.6s ease;
-        }
-        .page.active {
-            display: block; opacity: 1;
-            animation: pageFadeIn 0.6s ease;
-        }
-        @keyframes pageFadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        /* أيقونات عائمة */
+        .fab-whatsapp { position: fixed; bottom: 32px; right: 32px; z-index: 999; background: #25D366; color: white; width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 8px 32px rgba(37,211,102,0.45); transition: all 0.4s ease; text-decoration: none; animation: pulse-wa 2s infinite; }
+        @keyframes pulse-wa { 0%,100% { box-shadow: 0 8px 32px rgba(37,211,102,0.45); } 50% { box-shadow: 0 8px 56px rgba(37,211,102,0.75); } }
+        .fab-whatsapp:hover { transform: scale(1.12) rotate(8deg); animation: none; }
+        .fab-cart { position: fixed; bottom: 32px; left: 32px; z-index: 999; background: var(--card); color: var(--gold); width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; border: 2px solid var(--gold); cursor: pointer; transition: all 0.4s ease; box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
+        .fab-cart:hover { background: var(--gold); color: #0a0a0b; transform: scale(1.12); }
+        .cart-badge-mini { position: absolute; top: -4px; right: -4px; background: var(--rose); color: white; width: 24px; height: 24px; border-radius: 50%; font-size: 11px; display: flex; align-items: center; justify-content: center; font-weight: 700; }
 
-        .bg-dark-gradient {
-            background: linear-gradient(180deg, #0a0a0b 0%, #111113 50%, #0a0a0b 100%);
-        }
+        /* مودال */
+        .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.88); backdrop-filter: blur(12px); z-index: 2000; display: none; align-items: center; justify-content: center; }
+        .modal-backdrop.show { display: flex; }
+        .modal-content { background: var(--card); border-radius: var(--radius-lg); padding: 36px; max-width: 600px; width: 94%; max-height: 82vh; overflow-y: auto; border: 1px solid var(--border); animation: modalPop 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes modalPop { from { transform: scale(0.88); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
-        .badge {
-            display: inline-block;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 11px; letter-spacing: 1px; font-weight: 500;
-        }
-        .badge-new { background: var(--accent-glow); color: var(--accent-light); border: 1px solid var(--border-accent); }
-        .badge-bestseller { background: var(--rose-soft); color: var(--rose); border: 1px solid rgba(196, 160, 160, 0.3); }
-        .badge-exclusive { background: var(--sage-soft); color: var(--sage); border: 1px solid rgba(160, 180, 160, 0.3); }
+        /* اختيار الألوان */
+        .color-swatch { width: 48px; height: 48px; border-radius: 50%; cursor: pointer; border: 3px solid transparent; transition: all 0.35s ease; position: relative; flex-shrink: 0; }
+        .color-swatch:hover { transform: scale(1.22); z-index: 2; }
+        .color-swatch.picked { border-color: var(--gold); box-shadow: 0 0 28px rgba(196,168,130,0.55); transform: scale(1.1); }
+        .color-swatch.picked::after { content: '✓'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 20px; text-shadow: 0 0 10px rgba(0,0,0,0.9); }
 
-        .golden-glow {
-            position: absolute; border-radius: 50%;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-            pointer-events: none;
-        }
+        /* اختيار الشكل */
+        .shape-chip { padding: 12px 20px; border-radius: 16px; border: 2px solid var(--border); cursor: pointer; transition: all 0.35s ease; background: var(--dark2); color: var(--text3); font-size: 13px; text-align: center; }
+        .shape-chip:hover { border-color: var(--gold); color: var(--gold); background: rgba(196,168,130,0.04); }
+        .shape-chip.chosen { border-color: var(--gold); background: rgba(196,168,130,0.12); color: var(--gold); font-weight: 700; }
 
-        @keyframes goldenPulse {
-            0%, 100% { box-shadow: 0 0 20px var(--accent-glow); }
-            50% { box-shadow: 0 0 40px var(--accent-glow-strong); }
-        }
-        .pulse-gold { animation: goldenPulse 3s ease-in-out infinite; }
+        /* اختيار الحجم */
+        .size-chip { padding: 10px 18px; border-radius: 14px; border: 2px solid var(--border); cursor: pointer; transition: all 0.35s ease; background: var(--dark2); color: var(--text3); font-size: 13px; }
+        .size-chip:hover { border-color: var(--gold); color: var(--gold); }
+        .size-chip.chosen { border-color: var(--gold); background: rgba(196,168,130,0.12); color: var(--gold); font-weight: 700; }
 
-        .cart-sidebar {
-            position: fixed; top: 0; left: -400px;
-            width: 380px; height: 100vh;
-            background: var(--bg-card);
-            border-right: 1px solid var(--border);
-            z-index: 100003;
-            transition: left 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            padding: 30px; overflow-y: auto;
-        }
-        .cart-sidebar.open { left: 0; }
-        .cart-overlay {
-            position: fixed; inset: 0;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 100002;
-            opacity: 0; visibility: hidden;
-            transition: all 0.4s ease;
-        }
-        .cart-overlay.active { opacity: 1; visibility: visible; }
+        /* فئات المتجر */
+        .cat-pill { padding: 10px 24px; border-radius: 50px; border: 1.5px solid var(--border); color: var(--text3); cursor: pointer; transition: all 0.35s ease; font-family: 'Noto Naskh Arabic', serif; background: transparent; font-size: 13px; white-space: nowrap; }
+        .cat-pill.active, .cat-pill:hover { background: var(--gold); color: #0a0a0b; border-color: var(--gold); font-weight: 700; }
 
-        /* Hero image */
-        .hero-flower-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 40px;
-        }
+        /* تنبيه */
+        .toast-bar { position: fixed; top: 28px; left: 50%; transform: translateX(-50%) translateY(-140px); background: #1a2e1a; color: #9dd89d; padding: 14px 32px; border-radius: 50px; z-index: 3000; transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1); white-space: nowrap; font-family: 'Noto Naskh Arabic', serif; font-size: 14px; border: 1px solid #2d4d2d; box-shadow: 0 8px 36px rgba(0,0,0,0.5); }
+        .toast-bar.visible { transform: translateX(-50%) translateY(0); }
 
-        /* Section background images */
-        .section-bg-image {
-            position: absolute;
-            inset: 0;
-            object-fit: cover;
-            opacity: 0.05;
-            pointer-events: none;
-        }
+        /* حقول */
+        .input-dark { width: 100%; background: var(--dark2); border: 1.5px solid var(--border); border-radius: 16px; padding: 16px 20px; color: var(--text); font-family: 'Noto Naskh Arabic', serif; text-align: right; transition: all 0.35s ease; font-size: 14px; }
+        .input-dark:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 5px rgba(196,168,130,0.06); }
+        .input-dark::placeholder { color: var(--text4); }
+
+        /* عناوين */
+        .section-heading { font-size: clamp(1.8rem, 4vw, 3.2rem); text-align: center; margin-bottom: 0.6rem; font-weight: 300; }
+        .section-subheading { color: var(--gold); text-align: center; margin-bottom: 3rem; font-size: 1.05rem; letter-spacing: 1.5px; }
+
+        /* إحصائيات */
+        .stat-box { background: var(--card); border-radius: var(--radius); padding: 32px 24px; border: 1px solid var(--border); text-align: center; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .stat-box:hover { border-color: rgba(196,168,130,0.45); transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+
+        /* كمية */
+        .qty-btn { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--border2); background: var(--dark2); color: var(--text); font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.35s ease; }
+        .qty-btn:hover { background: var(--gold); color: #000; border-color: var(--gold); }
+        .qty-display { width: 60px; text-align: center; background: transparent; border: none; color: var(--text); font-size: 22px; font-family: 'Noto Naskh Arabic', serif; font-weight: 700; }
+
+        /* نجوم */
+        .stars { color: #f0c040; letter-spacing: 3px; font-size: 16px; }
+
+        /* شارات */
+        .badge-new { background: rgba(196,168,130,0.12); color: var(--gold-light); padding: 4px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 1px; border: 1px solid rgba(196,168,130,0.2); }
+        .badge-hot { background: var(--rose-soft); color: var(--rose); padding: 4px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; border: 1px solid rgba(196,160,160,0.25); }
+        .badge-luxe { background: var(--sage-soft); color: var(--sage); padding: 4px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; border: 1px solid rgba(160,180,160,0.25); }
+
+        /* شبكة المنتجات */
+        .product-grid { display: grid; gap: 20px; }
+        @media (min-width: 640px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .product-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (min-width: 1280px) { .product-grid { grid-template-columns: repeat(4, 1fr); } }
 
         @media (max-width: 768px) {
-            #cursor, #cursor-dot { display: none; }
-            body { cursor: auto; }
+            .section-heading { font-size: 1.8rem; }
+            .hero-text { font-size: 2rem; }
+            .nav-desktop { display: none; }
+        }
+        @media (min-width: 769px) {
+            .nav-desktop { display: flex; }
         }
     </style>
 </head>
 <body>
 
-    <div id="cursor"></div>
-    <div id="cursor-dot"></div>
-
-    <div id="preloader">
-        <div class="preloader-content" style="text-align: center;">
-            <div class="preloader-flower" style="display: flex; gap: 6px; justify-content: center; margin-bottom: 24px;">
-                <span style="width: 10px; height: 50px; background: linear-gradient(180deg, #c4a0a0, #c4a882, #a0b4a0); border-radius: 5px; animation: preloaderWave 1.2s ease-in-out infinite; box-shadow: 0 0 20px rgba(196,168,130,0.15);"></span>
-                <span style="width: 10px; height: 65px; background: linear-gradient(180deg, #c4a0a0, #c4a882, #a0b4a0); border-radius: 5px; animation: preloaderWave 1.2s ease-in-out infinite; animation-delay: 0.1s; box-shadow: 0 0 20px rgba(196,168,130,0.15);"></span>
-                <span style="width: 10px; height: 80px; background: linear-gradient(180deg, #c4a0a0, #c4a882, #a0b4a0); border-radius: 5px; animation: preloaderWave 1.2s ease-in-out infinite; animation-delay: 0.2s; box-shadow: 0 0 20px rgba(196,168,130,0.15);"></span>
-                <span style="width: 10px; height: 65px; background: linear-gradient(180deg, #c4a0a0, #c4a882, #a0b4a0); border-radius: 5px; animation: preloaderWave 1.2s ease-in-out infinite; animation-delay: 0.3s; box-shadow: 0 0 20px rgba(196,168,130,0.15);"></span>
-                <span style="width: 10px; height: 50px; background: linear-gradient(180deg, #c4a0a0, #c4a882, #a0b4a0); border-radius: 5px; animation: preloaderWave 1.2s ease-in-out infinite; animation-delay: 0.4s; box-shadow: 0 0 20px rgba(196,168,130,0.15);"></span>
-            </div>
-            <p style="font-family: 'Cormorant Garamond', serif; color: #c4a882; font-size: 14px; letter-spacing: 6px; animation: preloaderFade 1.5s ease-in-out infinite;">FLORA EXQUISITE</p>
-        </div>
-    </div>
-
-    <style>
-        @keyframes preloaderWave {
-            0%, 100% { transform: scaleY(0.4); opacity: 0.3; }
-            50% { transform: scaleY(1); opacity: 1; }
-        }
-        @keyframes preloaderFade {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
-        }
-    </style>
-
-    <div id="toast" class="toast"></div>
-    <div id="cart-overlay" class="cart-overlay"></div>
-    <div id="cart-sidebar" class="cart-sidebar">
-        <div class="flex items-center justify-between mb-8">
-            <h3 class="text-xl serif text-[#e8e4df]">سلة التسوق</h3>
-            <button id="close-cart" class="text-[#8a847c] hover:text-[#c4a882] text-2xl transition-colors">✕</button>
-        </div>
-        <div id="cart-items" class="space-y-4">
-            <p class="text-[#5c5852] text-center py-10">السلة فارغة</p>
-        </div>
-        <div id="cart-total" class="mt-8 pt-6 border-t border-[#222225] hidden">
-            <div class="flex justify-between text-[#e8e4df] mb-4">
-                <span>المجموع</span>
-                <span id="total-price" class="text-[#c4a882] font-bold">0 د.ج</span>
-            </div>
-            <button class="elegant-btn w-full" id="checkout-btn"><span>إتمام الشراء</span></button>
-        </div>
-    </div>
-
-    <div id="modal-overlay" class="modal-overlay">
-        <div class="modal">
-            <span class="text-6xl mb-4 block" id="modal-icon">✅</span>
-            <h3 class="text-2xl serif text-[#e8e4df] mb-3" id="modal-title">تمت الإضافة!</h3>
-            <p class="text-[#8a847c] mb-6" id="modal-message">تمت إضافة المنتج إلى سلة التسوق</p>
-            <div class="flex gap-4 justify-center">
-                <button class="elegant-btn-outline" id="modal-continue">مواصلة التسوق</button>
-                <button class="elegant-btn" id="modal-cart"><span>عرض السلة</span></button>
-            </div>
-        </div>
-    </div>
-
-    <canvas id="three-canvas" style="position:fixed;top:0;left:0;z-index:0;pointer-events:none;"></canvas>
-
-    <!-- شريط التنقل -->
-    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-700" id="nav">
-        <div class="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex items-center justify-between">
-            <div class="flex items-center gap-3 cursor-pointer" id="logo-home">
-                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#c4a0a0] via-[#c4a882] to-[#a0b4a0] flex items-center justify-center shadow-lg pulse-gold">
-                    <span class="text-white text-lg">🌸</span>
+    <!-- ==================== شريط التنقل ==================== -->
+    <nav class="navbar" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 lg:px-8 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="navigateTo('home')">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-rose-300 via-amber-200 to-emerald-300 flex items-center justify-center shadow-lg pulse-gold">
+                    <span class="text-2xl">🌸</span>
                 </div>
-                <span class="text-lg serif text-[#d4c4ab] tracking-widest">فلورا</span>
+                <div>
+                    <span class="text-xl md:text-2xl serif text-[#d4c4ab] font-semibold tracking-wide">FLORA</span>
+                    <span class="text-[10px] text-[#8a847c] tracking-[0.3em] block -mt-1">EXQUISITE</span>
+                </div>
             </div>
             
-            <div class="hidden lg:flex items-center gap-8">
-                <a href="#" data-page="home" class="nav-link text-sm text-[#d4c4ab] tracking-[0.15em] transition-all duration-300 hover:text-[#e8e4df] pb-1 border-b-2 border-[#c4a882]">الرئيسية</a>
-                <a href="#" data-page="shop" class="nav-link text-sm text-[#8a847c] tracking-[0.15em] transition-all duration-300 hover:text-[#d4c4ab]">متجر الورد والهدايا</a>
-                <a href="#" data-page="cars" class="nav-link text-sm text-[#8a847c] tracking-[0.15em] transition-all duration-300 hover:text-[#d4c4ab]">تزيين السيارات</a>
-                <a href="#" data-page="gardens" class="nav-link text-sm text-[#8a847c] tracking-[0.15em] transition-all duration-300 hover:text-[#d4c4ab]">تنسيق الحدائق</a>
-                <a href="#" data-page="contact" class="nav-link text-sm text-[#8a847c] tracking-[0.15em] transition-all duration-300 hover:text-[#d4c4ab]">اتصل بنا</a>
+            <div class="nav-desktop items-center gap-0">
+                <button class="nav-link active" data-page="home" onclick="navigateTo('home')">🏠 الرئيسية</button>
+                <button class="nav-link" data-page="shop" onclick="navigateTo('shop')">🛍️ المتجر</button>
+                <button class="nav-link" data-page="customize" onclick="navigateTo('customize')">🎨 تخصيص</button>
+                <button class="nav-link" data-page="cars" onclick="navigateTo('cars')">🚗 السيارات</button>
+                <button class="nav-link" data-page="gardens" onclick="navigateTo('gardens')">🌿 الحدائق</button>
+                <button class="nav-link" data-page="events" onclick="navigateTo('events')">🎉 المناسبات</button>
+                <button class="nav-link" data-page="contact" onclick="navigateTo('contact')">📞 تواصل</button>
             </div>
-
-            <div class="flex items-center gap-4">
-                <button class="relative" id="cart-toggle">
+            
+            <div class="flex items-center gap-3">
+                <button onclick="toggleCart()" class="relative p-2 rounded-xl hover:bg-[#1c1c1f] transition-all">
                     <span class="text-xl">🛒</span>
-                    <span class="absolute -top-2 -right-2 w-5 h-5 bg-[#c4a0a0] text-[#1a1a1d] text-xs rounded-full flex items-center justify-center font-bold" id="cart-count">0</span>
+                    <span class="cart-badge-mini" id="cartBadge">0</span>
                 </button>
-                <div class="magnetic-wrap">
-                    <button class="elegant-btn text-sm nav-link" data-page="shop"><span>تسوق الآن</span></button>
-                </div>
+                <a href="https://wa.me/213555123456" target="_blank" class="btn-outline-gold btn-sm hidden md:inline-flex items-center gap-1">
+                    <i class="fab fa-whatsapp"></i> واتساب
+                </a>
             </div>
         </div>
     </nav>
 
-    <main class="relative z-10">
-
-        <!-- الصفحة الرئيسية -->
-        <div id="page-home" class="page active">
-            <section class="min-h-screen flex items-center relative bg-dark-gradient overflow-hidden">
-                <div class="golden-glow w-[600px] h-[600px] -top-40 -right-40 opacity-30"></div>
-                <div class="golden-glow w-[400px] h-[400px] -bottom-20 -left-20 opacity-20"></div>
-                
-                <!-- صورة خلفية للقسم الرئيسي -->
-                <img src="https://image.made-in-china.com/202f0j00vLAboNIjpmqu/V116A-Home-Decor-Luxury-Modern-Accessorie-9-8-Inch-Ceramic-Porcelain-Gold-Tabletop-Flower-Vases.webp" alt="Flowers background" class="section-bg-image opacity-[0.03]">
-                
-                <div class="max-w-7xl mx-auto px-6 lg:px-10 w-full relative z-10">
-                    <div class="grid lg:grid-cols-2 gap-16 items-center">
-                        
-                        <div class="space-y-10">
-                            <div class="space-y-6">
-                                <div class="reveal-line">
-                                    <span class="text-xs tracking-[0.3em] text-[#c4a882] uppercase">متجر الورد والهدايا الفاخرة</span>
-                                </div>
-                                <div class="space-y-3">
-                                    <div class="reveal-line">
-                                        <span class="text-5xl md:text-6xl lg:text-7xl serif font-light text-[#e8e4df] leading-tight">
-                                            أناقة الطبيعة
-                                        </span>
-                                    </div>
-                                    <div class="reveal-line">
-                                        <span class="text-5xl md:text-6xl lg:text-7xl serif italic text-[#c4a882] leading-tight">
-                                            في أبهى صورة
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="reveal-line">
-                                <span class="text-base text-[#8a847c] leading-relaxed max-w-md">
-                                    نقدم أجمل باقات الورد والهدايا الفاخرة من قلب الجزائر. 
-                                    تصاميم أنيقة تناسب كل المناسبات والذوق الرفيع.
-                                </span>
-                            </div>
-
-                            <div class="flex flex-wrap gap-4">
-                                <div class="magnetic-wrap">
-                                    <button class="elegant-btn nav-link" data-page="shop"><span>استكشف المتجر ✦</span></button>
-                                </div>
-                                <div class="magnetic-wrap">
-                                    <button class="elegant-btn-outline" id="watch-gallery-btn">شاهد المعرض ⟶</button>
-                                </div>
-                            </div>
-
-                            <div class="flex gap-12 pt-10 border-t border-[#222225]">
-                                <div><p class="text-3xl serif text-[#c4a882]">+٥٠٠</p><p class="text-xs text-[#8a847c] mt-1">باقة مميزة</p></div>
-                                <div><p class="text-3xl serif text-[#c4a882]">٤٨</p><p class="text-xs text-[#8a847c] mt-1">ولاية</p></div>
-                                <div><p class="text-3xl serif text-[#c4a882]">٢٤h</p><p class="text-xs text-[#8a847c] mt-1">توصيل سريع</p></div>
-                            </div>
-                        </div>
-
-                        <div class="relative hidden lg:block">
-                            <div class="card-3d-wrap">
-                                <div class="card-3d rounded-[40px] overflow-hidden aspect-[3/4] relative bg-[#161618] border border-[#222225] shadow-2xl" id="hero-card">
-                                    <!-- صورة البطاقة الرئيسية -->
-                                    <img src="https://jasminegift.com/wp-content/uploads/2021/07/5b09f81a-6d57-4de5-96c9-bb909fe40088.jpg" alt="Luxury flower bouquet" class="hero-flower-image">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0b]/80 via-transparent to-transparent"></div>
-                                    
-                                    <div class="absolute bottom-10 left-10 right-10 z-10 text-center">
-                                        <p class="text-[#d4c4ab] tracking-[0.3em] text-sm font-medium">إكسكويزيت</p>
-                                        <p class="text-[#8a847c] text-xs mt-2">متجر الورد والهدايا</p>
-                                    </div>
-
-                                    <div class="absolute top-6 right-6 w-16 h-16 border-t-2 border-r-2 border-[#c4a882]/50 rounded-tr-3xl"></div>
-                                    <div class="absolute bottom-6 left-6 w-16 h-16 border-b-2 border-l-2 border-[#c4a882]/50 rounded-bl-3xl"></div>
-                                </div>
-                            </div>
-
-                            <div class="absolute -bottom-4 -left-4 bg-[#1c1c1f] rounded-2xl p-5 z-20 shadow-lg border border-[#2a2a2e]">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#c4a0a0] to-[#c4a882] flex items-center justify-center shadow-lg">🇩🇿</div>
-                                    <div>
-                                        <p class="text-xs text-[#d4c4ab] font-semibold">توصيل فوري</p>
-                                        <p class="text-xs text-[#8a847c]">جميع ولايات الوطن</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <!-- ==================== الصفحة 1: الرئيسية ==================== -->
+    <div id="page-home" class="page active">
+        <section class="relative min-h-[90vh] flex items-center overflow-hidden" style="background: radial-gradient(ellipse at 50% 0%, #1c1814 0%, #0a0a0b 70%);">
+            <div class="absolute inset-0 opacity-[0.02]" style="background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><path d=%22M100 20 Q120 5 140 20 Q155 40 140 60 Q120 75 100 60 Q80 75 60 60 Q45 40 60 20 Q80 5 100 20Z%22 fill=%22%23c4a882%22/><circle cx=%22170%22 cy=%22150%22 r=%2218%22 fill=%22%23c4a882%22 opacity=%220.7%22/><circle cx=%2230%22 cy=%22160%22 r=%2212%22 fill=%22%23c4a882%22 opacity=%220.5%22/></svg>'); background-size: 280px;"></div>
+            <div class="max-w-7xl mx-auto px-4 lg:px-8 py-20 md:py-28 text-center relative z-10">
+                <span class="inline-block px-6 py-2.5 rounded-full bg-[#1c1c1f] border border-[#2a2a2e] text-[#c4a882] text-xs tracking-[0.35em] mb-8">✦ أفخم متجر ورد وهدايا في الجزائر ✦</span>
+                <h1 class="hero-text text-4xl md:text-7xl lg:text-8xl serif font-light text-white mb-8 leading-[1.05]">
+                    جمال <span class="text-[#c4a882] italic font-normal">الطبيعة</span><br>
+                    <span class="text-3xl md:text-5xl lg:text-6xl">في أبهى صورة</span>
+                </h1>
+                <p class="text-[#8a847c] text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed">
+                    نقدم أجمل باقات الورد الطبيعي والهدايا الفاخرة من قلب الجزائر.<br>
+                    تصاميم راقية تناسب كل المناسبات وأرقى الأذواق.
+                </p>
+                <div class="flex flex-wrap gap-5 justify-center">
+                    <button onclick="navigateTo('shop')" class="btn-gold btn-lg"><i class="fas fa-shopping-bag ml-2"></i> تصفح المتجر</button>
+                    <button onclick="navigateTo('customize')" class="btn-outline-gold btn-lg"><i class="fas fa-palette ml-2"></i> خصص طلبك</button>
                 </div>
-
-                <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-10">
-                    <span class="text-[10px] text-[#5c5852] tracking-[0.3em]">اسحب للأسفل</span>
-                    <div class="w-px h-16 bg-gradient-to-b from-[#c4a882] to-transparent"></div>
-                </div>
-            </section>
-
-            <!-- أقسام الخدمات مع صور -->
-            <section class="py-24 px-6 lg:px-10 bg-[#0a0a0b]">
-                <div class="max-w-7xl mx-auto">
-                    <div class="text-center mb-16 space-y-4">
-                        <p class="text-xs text-[#c4a882] tracking-[0.3em]">خدماتنا المميزة</p>
-                        <h2 class="text-4xl md:text-5xl serif text-[#e8e4df]">ماذا نقدم <span class="italic text-[#c4a882]">لك</span></h2>
-                        <div class="divider-line mx-auto"></div>
-                    </div>
-                    <div class="grid md:grid-cols-3 gap-8">
-                        <div class="glass-panel rounded-3xl overflow-hidden cursor-pointer nav-link" data-page="shop">
-                            <div class="h-48 overflow-hidden">
-                                <img src="https://cdn.salla.sa/ZYngQn/cadafb36-9e23-488b-8e01-d0d56f2e155f-500x500-eQ6NF8zTXgtyptp8TzGNCSmG4Ei7L7JftaDOKdHw.jpg" alt="باقات الورد" class="w-full h-full object-cover">
-                            </div>
-                            <div class="p-8 text-center">
-                                <h3 class="text-xl serif text-[#e8e4df] mb-3">باقات الورد</h3>
-                                <p class="text-sm text-[#8a847c]">تشكيلات فاخرة من الورد الطبيعي للمناسبات والهدايا</p>
-                            </div>
-                        </div>
-                        <div class="glass-panel rounded-3xl overflow-hidden cursor-pointer nav-link" data-page="shop">
-                            <div class="h-48 overflow-hidden">
-                                <img src="https://image.made-in-china.com/202f0j00ItlsJROdwMcZ/-200ml.webp" alt="الهدايا الفاخرة" class="w-full h-full object-cover">
-                            </div>
-                            <div class="p-8 text-center">
-                                <h3 class="text-xl serif text-[#e8e4df] mb-3">الهدايا الفاخرة</h3>
-                                <p class="text-sm text-[#8a847c]">مجموعة راقية من الهدايا مع تغليف أنيق ومميز</p>
-                            </div>
-                        </div>
-                        <div class="glass-panel rounded-3xl overflow-hidden cursor-pointer nav-link" data-page="cars">
-                            <div class="h-48 overflow-hidden">
-                                <img src="https://decomarcgifts.com/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-16-at-12.22.36-PM-1-473x473.jpeg" alt="تزيين السيارات" class="w-full h-full object-cover">
-                            </div>
-                            <div class="p-8 text-center">
-                                <h3 class="text-xl serif text-[#e8e4df] mb-3">تزيين السيارات</h3>
-                                <p class="text-sm text-[#8a847c]">زينة فاخرة لمواكب الأفراح والمناسبات الخاصة</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- صفحة متجر الورد والهدايا -->
-        <div id="page-shop" class="page">
-            <section class="pt-32 pb-20 px-6 lg:px-10 bg-dark-gradient">
-                <div class="golden-glow w-[500px] h-[500px] -top-20 left-1/2 -translate-x-1/2 opacity-20"></div>
-                
-                <div class="max-w-7xl mx-auto relative z-10">
-                    <div class="text-center mb-16 space-y-4">
-                        <p class="text-xs text-[#c4a882] tracking-[0.3em]">متجر الورد والهدايا</p>
-                        <h2 class="text-4xl md:text-5xl serif text-[#e8e4df]">تشكيلات <span class="italic text-[#c4a882]">مميزة</span> لكل المناسبات</h2>
-                        <p class="text-[#8a847c] max-w-2xl mx-auto">نقدم أجمل باقات الورد الطبيعي والهدايا الفاخرة مع خدمة التوصيل لجميع ولايات الجزائر</p>
-                        <div class="divider-line mx-auto"></div>
-                    </div>
-
-                    <div class="flex flex-wrap justify-center gap-4 mb-12">
-                        <button class="filter-btn px-6 py-3 rounded-full bg-[#c4a882] text-[#0a0a0b] text-sm tracking-wider shadow-lg font-medium" data-filter="all">الكل</button>
-                        <button class="filter-btn px-6 py-3 rounded-full border border-[#2a2a2e] text-[#8a847c] text-sm tracking-wider hover:border-[#c4a882] hover:text-[#c4a882] transition-all" data-filter="flowers">باقات الورد</button>
-                        <button class="filter-btn px-6 py-3 rounded-full border border-[#2a2a2e] text-[#8a847c] text-sm tracking-wider hover:border-[#c4a882] hover:text-[#c4a882] transition-all" data-filter="gifts">علب الهدايا</button>
-                        <button class="filter-btn px-6 py-3 rounded-full border border-[#2a2a2e] text-[#8a847c] text-sm tracking-wider hover:border-[#c4a882] hover:text-[#c4a882] transition-all" data-filter="chocolate">الشوكولاتة</button>
-                        <button class="filter-btn px-6 py-3 rounded-full border border-[#2a2a2e] text-[#8a847c] text-sm tracking-wider hover:border-[#c4a882] hover:text-[#c4a882] transition-all" data-filter="perfume">العطور</button>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="products-grid"></div>
-
-                    <div class="text-center mt-12">
-                        <button class="elegant-btn-outline" id="load-more-btn">عرض المزيد من المنتجات</button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- قسم المميزات -->
-            <section class="py-20 px-6 lg:px-10 bg-[#0a0a0b]">
-                <div class="max-w-7xl mx-auto">
-                    <div class="grid md:grid-cols-4 gap-8">
-                        <div class="text-center space-y-3 p-6 rounded-2xl bg-[#111113] border border-[#1a1a1d]">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-DBIVzcEXzZh5CrlZeQHcUEdZgaHSDj1fPpZzTNJFkw&s=10" alt="توصيل سريع" class="w-16 h-16 rounded-full object-cover mx-auto mb-2">
-                            <h4 class="text-sm font-semibold text-[#e8e4df]">توصيل سريع</h4>
-                            <p class="text-xs text-[#8a847c]">توصيل في نفس اليوم لجميع الولايات</p>
-                        </div>
-                        <div class="text-center space-y-3 p-6 rounded-2xl bg-[#111113] border border-[#1a1a1d]">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlxA17ZcqukRAaxi4FlurP5E_628U0HtLOfF5KFSY9Vg&s=10" alt="جودة مضمونة" class="w-16 h-16 rounded-full object-cover mx-auto mb-2">
-                            <h4 class="text-sm font-semibold text-[#e8e4df]">جودة مضمونة</h4>
-                            <p class="text-xs text-[#8a847c]">زهور طازجة ومنتجات أصلية</p>
-                        </div>
-                        <div class="text-center space-y-3 p-6 rounded-2xl bg-[#111113] border border-[#1a1a1d]">
-                            <img src="https://qualitymakers.ae/wp-content/uploads/2026/01/%D8%AA%D8%BA%D9%84%D9%8A%D9%81-%D9%87%D8%AF%D8%A7%D9%8A%D8%A7.webp" alt="تغليف فاخر" class="w-16 h-16 rounded-full object-cover mx-auto mb-2">
-                            <h4 class="text-sm font-semibold text-[#e8e4df]">تغليف فاخر</h4>
-                            <p class="text-xs text-[#8a847c]">تغليف أنيق مجاني لجميع الطلبات</p>
-                        </div>
-                        <div class="text-center space-y-3 p-6 rounded-2xl bg-[#111113] border border-[#1a1a1d]">
-                            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=200&q=80" alt="دفع آمن" class="w-16 h-16 rounded-full object-cover mx-auto mb-2">
-                            <h4 class="text-sm font-semibold text-[#e8e4df]">دفع آمن</h4>
-                            <p class="text-xs text-[#8a847c]">طرق دفع متعددة وآمنة</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- صفحة تزيين السيارات -->
-        <div id="page-cars" class="page">
-            <section class="pt-32 pb-20 px-6 lg:px-10 bg-dark-gradient">
-                <div class="max-w-7xl mx-auto">
-                    <div class="text-center mb-16 space-y-4">
-                        <p class="text-xs text-[#c4a882] tracking-[0.3em]">خدماتنا</p>
-                        <h2 class="text-4xl md:text-5xl serif text-[#e8e4df]">تزيين <span class="italic text-[#c4a882]">السيارات</span></h2>
-                        <p class="text-[#8a847c] max-w-2xl mx-auto">نقدم خدمة تزيين سيارات الأفراح والمناسبات بأفخم أنواع الزهور الطبيعية والصناعية</p>
-                        <div class="divider-line mx-auto"></div>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-10 mb-16">
-                        <div class="bg-[#161618] rounded-3xl overflow-hidden border border-[#222225] hover:border-[#3a3a3e] hover:shadow-lg transition-all cursor-pointer" onclick="showToast('تم إرسال طلب الاستفسار عن خدمة تزيين السيارات')">
-                            <img src="https://static.hiamag.com/styles/autox754/public/article/01/04/2017/5244681-1536371157.jpg" alt="تزيين سيارة العروس" class="w-full h-56 object-cover">
-                            <div class="p-10 space-y-5">
-                                <h3 class="text-2xl serif text-[#e8e4df]">باقة العروس</h3>
-                                <p class="text-[#8a847c]">تزيين سيارة العروس بأفخم الورود الطبيعية مع لمسات من التول والأورجانزا.</p>
-                                <p class="text-2xl serif text-[#c4a882] font-semibold">تبدأ من ١٥,٠٠٠ د.ج</p>
-                                <button class="elegant-btn-outline mt-4">طلب الخدمة</button>
-                            </div>
-                        </div>
-                        <div class="bg-[#161618] rounded-3xl overflow-hidden border border-[#222225] hover:border-[#3a3a3e] hover:shadow-lg transition-all cursor-pointer" onclick="showToast('تم إرسال طلب الاستفسار عن خدمة موكب الزفاف')">
-                            <img src="https://carsrentl.icu/wp-content/uploads/2024/06/%D8%B1%D8%B1.jpeg" alt="موكب الزفاف" class="w-full h-56 object-cover">
-                            <div class="p-10 space-y-5">
-                                <h3 class="text-2xl serif text-[#e8e4df]">موكب الزفاف</h3>
-                                <p class="text-[#8a847c]">تنسيق كامل لموكب السيارات مع تزيين موحد يناسب جميع أنواع المركبات.</p>
-                                <p class="text-2xl serif text-[#c4a882] font-semibold">تبدأ من ٥٠,٠٠٠ د.ج</p>
-                                <button class="elegant-btn-outline mt-4">طلب الخدمة</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- صفحة تنسيق الحدائق -->
-        <div id="page-gardens" class="page">
-            <section class="pt-32 pb-20 px-6 lg:px-10 bg-dark-gradient">
-                <div class="max-w-7xl mx-auto">
-                    <div class="text-center mb-16 space-y-4">
-                        <p class="text-xs text-[#c4a882] tracking-[0.3em]">خدماتنا</p>
-                        <h2 class="text-4xl md:text-5xl serif text-[#e8e4df]">تنسيق <span class="italic text-[#c4a882]">الحدائق</span></h2>
-                        <p class="text-[#8a847c] max-w-2xl mx-auto">نحول المساحات الخضراء إلى جنان ساحرة</p>
-                        <div class="divider-line mx-auto"></div>
-                    </div>
-
-                    <div class="grid md:grid-cols-3 gap-8">
-                        <div class="bg-[#161618] rounded-3xl overflow-hidden border border-[#222225] hover:border-[#3a3a3e] hover:shadow-lg transition-all cursor-pointer" onclick="showToast('تم فتح نموذج طلب تصميم حديقة منزلية')">
-                            <img src="https://mamlakatalzuhur.com/wp-content/uploads/2023/05/Home-Garden-Landscaping-MamlakatAlzuhur.com_.webp" alt="حدائق منزلية" class="w-full h-48 object-cover">
-                            <div class="p-8 space-y-4 text-center">
-                                <h3 class="text-xl serif text-[#e8e4df]">حدائق منزلية</h3>
-                                <p class="text-sm text-[#8a847c]">تصميم وتنسيق حدائق الفلل والمنازل بأسلوب عصري وجذاب</p>
-                                <button class="elegant-btn-outline mt-4 text-xs">استفسر الآن</button>
-                            </div>
-                        </div>
-                        <div class="bg-[#161618] rounded-3xl overflow-hidden border border-[#222225] hover:border-[#3a3a3e] hover:shadow-lg transition-all cursor-pointer" onclick="showToast('تم فتح نموذج طلب تنسيق مساحة عامة')">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQR4mSScagNCHcNojPOoyTcvWG5S2YchgUzM8Xb1sA3Pxwb43NH-Yboc3k&s=10" alt="مساحات عامة" class="w-full h-48 object-cover">
-                            <div class="p-8 space-y-4 text-center">
-                                <h3 class="text-xl serif text-[#e8e4df]">مساحات عامة</h3>
-                                <p class="text-sm text-[#8a847c]">تنسيق حدائق الفنادق والمطاعم والشركات</p>
-                                <button class="elegant-btn-outline mt-4 text-xs">استفسر الآن</button>
-                            </div>
-                        </div>
-                        <div class="bg-[#161618] rounded-3xl overflow-hidden border border-[#222225] hover:border-[#3a3a3e] hover:shadow-lg transition-all cursor-pointer" onclick="showToast('تم فتح نموذج طلب توريد أشجار ونخيل')">
-                            <img src="https://s.alicdn.com/@sc04/kf/H69c17bdddb27448394526fff3b76df04w/High-Quality-Artificial-Plants-Bent-Artificial-Palm-Trees-and-Fan-Palms-for-House-or-Office-Decor-Plastic-Birthday-Ornament.jpg_300x300.jpg" alt="نخيل وأشجار" class="w-full h-48 object-cover">
-                            <div class="p-8 space-y-4 text-center">
-                                <h3 class="text-xl serif text-[#e8e4df]">نخيل وأشجار</h3>
-                                <p class="text-sm text-[#8a847c]">توريد وتركيب أشجار النخيل والزينة بجميع أنواعها</p>
-                                <button class="elegant-btn-outline mt-4 text-xs">استفسر الآن</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- صفحة اتصل بنا -->
-        <div id="page-contact" class="page">
-            <section class="pt-32 pb-20 px-6 lg:px-10 bg-dark-gradient">
-                <div class="max-w-4xl mx-auto text-center">
-                    <p class="text-xs text-[#c4a882] tracking-[0.3em]">خدمة العملاء</p>
-                    <h2 class="text-4xl md:text-5xl serif text-[#e8e4df] mt-4 mb-6">تواصل <span class="italic text-[#c4a882]">معنا</span></h2>
-                    <div class="divider-line mx-auto mb-12"></div>
-
-                    <div class="bg-[#161618] rounded-[40px] p-10 md:p-14 space-y-6 border border-[#222225] shadow-xl">
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <input type="text" placeholder="الاسم الكامل م" id="contact-name" class="w-full bg-[#111113] border border-[#222225] rounded-2xl px-6 py-5 text-[#e8e4df] placeholder-[#5c5852] focus:border-[#c4a882] focus:outline-none transition-all text-right">
-                            <input type="text" placeholder="رقم الهاتف" id="contact-phone" class="w-full bg-[#111113] border border-[#222225] rounded-2xl px-6 py-5 text-[#e8e4df] placeholder-[#5c5852] focus:border-[#c4a882] focus:outline-none transition-all text-right">
-                        </div>
-                        <textarea rows="4" placeholder="أخبرنا عن طلبك..." id="contact-message" class="w-full bg-[#111113] border border-[#222225] rounded-2xl px-6 py-5 text-[#e8e4df] placeholder-[#5c5852] focus:border-[#c4a882] focus:outline-none transition-all text-right"></textarea>
-                        <button class="elegant-btn" id="submit-contact"><span>أرسل الطلب</span></button>
-                    </div>
-
-                    <div class="grid md:grid-cols-3 gap-6 mt-12">
-                        <div class="bg-[#161618] rounded-2xl p-6 text-center border border-[#222225]">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYvkhfWPLvxXOnJQMZV8MxWBl95Qg5R61UCD8wYXuzbP83vCUHIELRQ9M&s=10" alt="موقعنا" class="w-16 h-16 rounded-full object-cover mx-auto mb-3">
-                            <p class="text-[#e8e4df] font-semibold mt-3">العنوان</p>
-                            <p class="text-sm text-[#8a847c] mt-1">شارع ديدوش مراد، الجزائر العاصمة</p>
-                        </div>
-                        <div class="bg-[#161618] rounded-2xl p-6 text-center border border-[#222225] cursor-pointer" onclick="showToast('تم نسخ رقم الهاتف: +213 555 123 456')">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkVaQS8Xeb3OBm7ABlCKhHBZHEkRv6pEFiYYZVednrLjupwFW6GkHBUUo&s=10" alt="اتصل بنا" class="w-16 h-16 rounded-full object-cover mx-auto mb-3">
-                            <p class="text-[#e8e4df] font-semibold mt-3">الهاتف</p>
-                            <p class="text-sm text-[#8a847c] mt-1">+213 555 123 456</p>
-                        </div>
-                        <div class="bg-[#161618] rounded-2xl p-6 text-center border border-[#222225]">
-                            <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=200&q=80" alt="ساعات العمل" class="w-16 h-16 rounded-full object-cover mx-auto mb-3">
-                            <p class="text-[#e8e4df] font-semibold mt-3">ساعات العمل</p>
-                            <p class="text-sm text-[#8a847c] mt-1">السبت - الخميس: 9 صباحاً - 8 مساءً</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- تذييل الصفحة -->
-        <footer class="border-t border-[#1a1a1d] py-12 px-6 lg:px-10 bg-[#0a0a0b]">
-            <div class="max-w-7xl mx-auto">
-                <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-                    <div class="flex items-center gap-3 cursor-pointer" id="footer-logo">
-                        <span class="text-[#c4a882] tracking-[0.2em] text-sm font-medium">فلورا إكسكويزيت - الجزائر</span>
-                    </div>
-                    <div class="flex gap-6 text-sm">
-                        <a href="#" class="text-[#8a847c] hover:text-[#c4a882] transition-colors nav-link" data-page="home">الرئيسية</a>
-                        <a href="#" class="text-[#8a847c] hover:text-[#c4a882] transition-colors nav-link" data-page="shop">المتجر</a>
-                        <a href="#" class="text-[#8a847c] hover:text-[#c4a882] transition-colors nav-link" data-page="cars">تزيين السيارات</a>
-                        <a href="#" class="text-[#8a847c] hover:text-[#c4a882] transition-colors nav-link" data-page="gardens">الحدائق</a>
-                    </div>
-                    <p class="text-xs text-[#5c5852]">© ٢٠٢٤ فلورا إكسكويزيت. جميع الحقوق محفوظة</p>
+                <div class="flex justify-center gap-8 md:gap-20 mt-20 flex-wrap">
+                    <div class="text-center"><p class="text-4xl md:text-5xl serif text-[#c4a882] font-semibold">+2500</p><p class="text-xs text-[#8a847c] mt-2 tracking-wider">طلب مكتمل</p></div>
+                    <div class="text-center"><p class="text-4xl md:text-5xl serif text-[#c4a882] font-semibold">48</p><p class="text-xs text-[#8a847c] mt-2 tracking-wider">ولاية جزائرية</p></div>
+                    <div class="text-center"><p class="text-4xl md:text-5xl serif text-[#c4a882] font-semibold">24H</p><p class="text-xs text-[#8a847c] mt-2 tracking-wider">توصيل سريع</p></div>
+                    <div class="text-center"><p class="text-4xl md:text-5xl serif text-[#c4a882] font-semibold">4.9</p><p class="text-xs text-[#8a847c] mt-2 tracking-wider">⭐ تقييم العملاء</p></div>
                 </div>
             </div>
-        </footer>
+        </section>
 
-    </main>
+        <section class="py-24 px-4 lg:px-8 bg-[#0a0a0b]">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="section-heading serif">لماذا <span class="italic text-[#c4a882]">نحن؟</span></h2>
+                <p class="section-subheading">ما يميز فلورا إكسكويزيت عن غيرها</p>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="stat-box"><span class="text-6xl block mb-5">🌹</span><h3 class="text-white font-bold text-lg mb-3">زهور طازجة يومياً</h3><p class="text-[#8a847c] text-sm leading-relaxed">نستورد زهورنا من أفضل المزارع في هولندا والإكوادور ونضمن طزاجتها.</p></div>
+                    <div class="stat-box"><span class="text-6xl block mb-5">🎁</span><h3 class="text-white font-bold text-lg mb-3">تغليف فاخر مجاني</h3><p class="text-[#8a847c] text-sm leading-relaxed">نقدم تغليفاً راقياً ومجانياً لجميع الطلبات مع بطاقة معايدة مخصصة.</p></div>
+                    <div class="stat-box"><span class="text-6xl block mb-5">🚀</span><h3 class="text-white font-bold text-lg mb-3">توصيل فوري</h3><p class="text-[#8a847c] text-sm leading-relaxed">نوصل طلبك في نفس اليوم داخل العاصمة وخلال 24 ساعة لباقي الولايات.</p></div>
+                    <div class="stat-box"><span class="text-6xl block mb-5">💯</span><h3 class="text-white font-bold text-lg mb-3">ضمان الجودة</h3><p class="text-[#8a847c] text-sm leading-relaxed">إن لم تكن راضياً عن طلبك، نضمن استبداله أو استرداد قيمته بالكامل.</p></div>
+                </div>
+            </div>
+        </section>
 
-    <script type="module">
-        import * as THREE from 'three';
-        const canvas = document.getElementById('three-canvas');
-        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
-        camera.position.z = 5;
-        const particlesGeometry = new THREE.BufferGeometry();
-        const count = 200;
-        const positions = new Float32Array(count * 3);
-        const colors = new Float32Array(count * 3);
-        const nightColors = [
-            new THREE.Color('#c4a882'), new THREE.Color('#d4c4ab'), new THREE.Color('#c4a0a0'),
-            new THREE.Color('#a0b4a0'), new THREE.Color('#b0a0b8'), new THREE.Color('#e8e4df'),
-        ];
-        for (let i = 0; i < count; i++) {
-            positions[i * 3] = (Math.random() - 0.5) * 10;
-            positions[i * 3 + 1] = (Math.random() - 0.5) * 10;
-            positions[i * 3 + 2] = (Math.random() - 0.5) * 5;
-            const color = nightColors[Math.floor(Math.random() * nightColors.length)];
-            colors[i * 3] = color.r; colors[i * 3 + 1] = color.g; colors[i * 3 + 2] = color.b;
-        }
-        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-        const particlesMaterial = new THREE.PointsMaterial({ size: 0.04, vertexColors: true, blending: THREE.AdditiveBlending, depthWrite: false, transparent: true, opacity: 0.7 });
-        const particles = new THREE.Points(particlesGeometry, particlesMaterial);
-        scene.add(particles);
-        const glowGeometry = new THREE.SphereGeometry(0.6, 32, 32);
-        const glowMaterial = new THREE.ShaderMaterial({
-            uniforms: { time: { value: 0 }, color1: { value: new THREE.Color('#c4a882') }, color2: { value: new THREE.Color('#c4a0a0') }, color3: { value: new THREE.Color('#a0b4a0') } },
-            vertexShader: `varying vec3 vPosition; void main() { vPosition = position; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }`,
-            fragmentShader: `varying vec3 vPosition; uniform float time; uniform vec3 color1; uniform vec3 color2; uniform vec3 color3; void main() { float dist = length(vPosition); float alpha = smoothstep(0.6, 0.0, dist); alpha *= 0.2 + 0.12 * sin(time * 1.2 + dist * 6.0); vec3 color = mix(color1, color2, sin(time * 0.6) * 0.5 + 0.5); color = mix(color, color3, cos(time * 0.8) * 0.5 + 0.5); gl_FragColor = vec4(color, alpha); }`,
-            transparent: true, depthWrite: false,
-        });
-        const glow = new THREE.Mesh(glowGeometry, glowMaterial);
-        scene.add(glow);
-        let mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
-        document.addEventListener('mousemove', (e) => { targetX = (e.clientX / window.innerWidth) * 2 - 1; targetY = -(e.clientY / window.innerHeight) * 2 + 1; });
-        const clock = new THREE.Clock();
-        function animate() {
-            requestAnimationFrame(animate);
-            const time = clock.getElapsedTime();
-            mouseX += (targetX - mouseX) * 0.03; mouseY += (targetY - mouseY) * 0.03;
-            particles.rotation.x += 0.0002; particles.rotation.y += 0.0003;
-            particles.rotation.x += mouseY * 0.0001; particles.rotation.y += mouseX * 0.0001;
-            glowMaterial.uniforms.time.value = time;
-            glow.position.x = mouseX * 0.4; glow.position.y = mouseY * 0.4;
-            renderer.render(scene, camera);
-        }
-        animate();
-        window.addEventListener('resize', () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); });
-    </script>
-
-    <script>
-        // ==================== PRODUCTS DATABASE WITH IMAGES ====================
-        const products = [
-            { id: 1, name: 'باقة الورد الملكي', desc: 'ورود طبيعية مختارة بعناية', price: 6500, image: 'https://www.api-prod.flowrista.com/Uploads/Product/69dfcf89-5dc0-4026-a196-5ba3d173b072.jpg', badge: 'new', category: 'flowers', rating: 5 },
-            { id: 2, name: 'علبة الهدايا الفاخرة', desc: 'ورد + شوكولاتة + عطر', price: 12000, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwKCbEdgAU71xvEA6GWQtvpdcv_A_ERwgXLxhtRjZekMlAe-oNmkKGmnQ&s=10', badge: 'bestseller', category: 'gifts', rating: 5 },
-            { id: 3, name: 'شوكولاتة بلجيكية فاخرة', desc: 'علبة 24 قطعة مع تغليف أنيق', price: 8500, image: 'https://laderach.com/media/catalog/product/cache/580ce9e034439d240d609eb08dc353f4/1/0/10092010_pralines_classic_assortiert_72er_5_4_3_1.jpg', badge: 'exclusive', category: 'chocolate', rating: 5 },
-            { id: 4, name: 'خزامى الألماس', desc: 'خزامى هولندي مع مزهرية كريستال', price: 15000, image: 'https://cdn.salla.sa/rodbO/7f99638a-6b51-4b23-9318-fa80ad4e3a26-1000x1000-EhefoimLIrNqGYychYSUVuqOKk63nDfgvhJphCkm.jpg', badge: 'new', category: 'flowers', rating: 5 },
-            { id: 5, name: 'باقة الأوركيد الأبيض', desc: 'أوركيد طبيعي فاخر', price: 18000, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0Fdt1wX5JS0fOlcY3fI9Sko6HxPskuruZOlzey8y3EEcy_WHGunUosKxh&s=10', badge: '', category: 'flowers', rating: 4 },
-            { id: 6, name: 'مجموعة الشموع المعطرة', desc: '3 شموع فاخرة مع حامل خشبي', price: 7500, image: 'https://cdn.salla.sa/ejzd/ng3vs3RN90EwJCKBLTdrcPFwJawFOGcDBxb8jfCN.jpg', badge: '', category: 'gifts', rating: 5 },
-            { id: 7, name: 'دمية مع باقة ورد', desc: 'هدية مثالية للمناسبات الرومانسية', price: 9500, image: 'https://kw.fnp.com/cdn/shop/files/24-roses-bouquet-with-teddy_1.jpg?format=webp&v=1760002766&width=720', badge: '', category: 'gifts', rating: 5 },
-            { id: 8, name: 'صندوق المجوهرات الفاخر', desc: 'صندوق خشبي مع ورد مجفف', price: 22000, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQowKQXciM8JaNIEX7ddC5WNou8YsB4H5nrJF7V9CELPsG0cmjQxvE_ewPb&s=10', badge: 'exclusive', category: 'gifts', rating: 5 },
-            { id: 9, name: 'عطر فرنسي فاخر', desc: 'عطر أصلي مع تغليف هدايا', price: 14000, image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=500&q=80', badge: 'new', category: 'perfume', rating: 5 },
-            { id: 10, name: 'باقة التوليب الهولندي', desc: 'توليب ملون طازج من هولندا', price: 9500, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3SxLhbjXhaZpnWwP7PO-qyjHbwiyTNFzfAyCGZzSFng&s=10', badge: '', category: 'flowers', rating: 5 },
-            { id: 11, name: 'علبة شوكولاتة سويسرية', desc: 'شوكولاتة سويسرية فاخرة 36 قطعة', price: 11000, image: 'https://www.shorouknews.com/uploadedimages/Other/original/20211210104542285.jpg', badge: 'bestseller', category: 'chocolate', rating: 5 },
-            { id: 12, name: 'سلة الفواكه الفاخرة', desc: 'فواكه موسمية طازجة مع تغليف أنيق', price: 7000, image: 'https://static-assets-prod.fnp.ae/images/pr/l/v20260701160412/the-healthy-choice-basket_1.jpg', badge: '', category: 'gifts', rating: 4 },
-        ];
-
-        let cart = [];
-        let currentFilter = 'all';
-        let visibleProducts = 8;
-
-        // ==================== PRELOADER ====================
-        window.addEventListener('load', () => { setTimeout(() => { document.getElementById('preloader').classList.add('hidden'); }, 2500); });
-
-        // ==================== CURSOR ====================
-        const cursor = document.getElementById('cursor');
-        const cursorDot = document.getElementById('cursor-dot');
-        let cursorX = 0, cursorY = 0, dotX = 0, dotY = 0;
-        document.addEventListener('mousemove', (e) => { cursorX = e.clientX; cursorY = e.clientY; });
-        function updateCursor() {
-            dotX += (cursorX - dotX) * 0.4; dotY += (cursorY - dotY) * 0.4;
-            if (cursor) { cursor.style.left = (cursorX - 16) + 'px'; cursor.style.top = (cursorY - 16) + 'px'; }
-            if (cursorDot) { cursorDot.style.left = dotX + 'px'; cursorDot.style.top = dotY + 'px'; }
-            requestAnimationFrame(updateCursor);
-        }
-        updateCursor();
-        document.querySelectorAll('a, button, .glass-panel, .elegant-btn, .elegant-btn-outline, input, textarea').forEach(el => {
-            el.addEventListener('mouseenter', () => cursor?.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursor?.classList.remove('hover'));
-        });
-
-        // ==================== LENIS ====================
-        const lenis = new Lenis({ duration: 1.5, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
-        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-        requestAnimationFrame(raf);
-
-        // ==================== TOAST ====================
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 2500);
-        }
-
-        // ==================== MODAL ====================
-        function showModal(title, message, icon = '✅') {
-            document.getElementById('modal-icon').textContent = icon;
-            document.getElementById('modal-title').textContent = title;
-            document.getElementById('modal-message').textContent = message;
-            document.getElementById('modal-overlay').classList.add('active');
-        }
-        function hideModal() { document.getElementById('modal-overlay').classList.remove('active'); }
-        document.getElementById('modal-overlay').addEventListener('click', function(e) { if (e.target === this) hideModal(); });
-        document.getElementById('modal-continue').addEventListener('click', hideModal);
-        document.getElementById('modal-cart').addEventListener('click', function() { hideModal(); openCart(); });
-
-        // ==================== CART ====================
-        function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            if (!product) return;
-            const existingItem = cart.find(item => item.id === productId);
-            if (existingItem) { existingItem.quantity++; } else { cart.push({ ...product, quantity: 1 }); }
-            updateCartUI();
-            showModal('تمت الإضافة!', `تمت إضافة ${product.name} إلى سلة التسوق`, '🛒');
-        }
-        function removeFromCart(productId) { cart = cart.filter(item => item.id !== productId); updateCartUI(); showToast('تم حذف المنتج من السلة'); }
-        function updateCartUI() {
-            const cartCount = document.getElementById('cart-count');
-            const cartItems = document.getElementById('cart-items');
-            const cartTotal = document.getElementById('cart-total');
-            const totalPrice = document.getElementById('total-price');
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            cartCount.textContent = totalItems;
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<p class="text-[#5c5852] text-center py-10">السلة فارغة</p>';
-                cartTotal.classList.add('hidden');
-            } else {
-                cartItems.innerHTML = cart.map(item => `
-                    <div class="flex items-center gap-4 bg-[#111113] p-4 rounded-xl border border-[#222225]">
-                        <img src="${item.image}" alt="${item.name}" class="w-14 h-14 rounded-xl object-cover">
-                        <div class="flex-1">
-                            <p class="text-[#e8e4df] text-sm font-medium">${item.name}</p>
-                            <p class="text-[#c4a882] text-xs">${item.price.toLocaleString()} د.ج × ${item.quantity}</p>
-                        </div>
-                        <button class="text-[#8a847c] hover:text-red-400 transition-colors" onclick="window.removeFromCart(${item.id})">✕</button>
+        <section class="py-24 px-4 lg:px-8 bg-[#111113]">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="section-heading serif">خدماتنا <span class="italic text-[#c4a882]">المتكاملة</span></h2>
+                <p class="section-subheading">نقدم مجموعة واسعة من الخدمات لتلبية جميع احتياجاتكم</p>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="glass-card cursor-pointer" onclick="navigateTo('shop')">
+                        <div class="relative overflow-hidden h-56"><img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=800&q=80" alt="باقات" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" onerror="this.src='https://placehold.co/800x500/161618/c4a882?text=💐'"><div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0b] via-transparent to-transparent"></div></div>
+                        <div class="p-8"><h3 class="text-2xl font-bold text-white mb-3">💐 باقات الورد</h3><p class="text-[#8a847c] text-sm mb-5 leading-relaxed">تشكيلات فاخرة من الورد الطبيعي لجميع المناسبات والأذواق.</p><span class="btn-gold btn-sm">اكتشف المزيد</span></div>
                     </div>
-                `).join('');
-                cartTotal.classList.remove('hidden');
-                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-                totalPrice.textContent = total.toLocaleString() + ' د.ج';
-            }
-        }
-        function openCart() { document.getElementById('cart-sidebar').classList.add('open'); document.getElementById('cart-overlay').classList.add('active'); }
-        function closeCart() { document.getElementById('cart-sidebar').classList.remove('open'); document.getElementById('cart-overlay').classList.remove('active'); }
-        document.getElementById('cart-toggle').addEventListener('click', openCart);
-        document.getElementById('close-cart').addEventListener('click', closeCart);
-        document.getElementById('cart-overlay').addEventListener('click', closeCart);
-        document.getElementById('checkout-btn')?.addEventListener('click', function() {
-            if (cart.length === 0) { showToast('السلة فارغة!'); return; }
-            closeCart(); showModal('تم الطلب! 🎉', 'شكراً لك! سيتم التواصل معك قريباً لتأكيد الطلب', '🎊');
-            cart = []; updateCartUI();
-        });
-
-        // ==================== RENDER PRODUCTS ====================
-        function renderProducts(filter = 'all', limit = visibleProducts) {
-            const grid = document.getElementById('products-grid');
-            if (!grid) return;
-            let filteredProducts = filter === 'all' ? products : products.filter(p => p.category === filter);
-            let displayProducts = filteredProducts.slice(0, limit);
-            const badgeLabels = { 'new': 'جديد', 'bestseller': 'الأكثر مبيعاً', 'exclusive': 'حصري' };
-            
-            grid.innerHTML = displayProducts.map(product => `
-                <div class="bg-[#161618] rounded-2xl overflow-hidden group border border-[#222225] hover:border-[#3a3a3e] hover:shadow-xl hover:shadow-[#c4a882]/5 transition-all duration-500">
-                    <div class="product-image-container aspect-square relative">
-                        <img src="${product.image}" alt="${product.name}" class="product-image w-full h-full object-cover" loading="lazy">
-                        <div class="product-image-overlay"></div>
-                        ${product.badge ? `<div class="absolute top-4 left-4 z-10"><span class="badge badge-${product.badge}">${badgeLabels[product.badge]}</span></div>` : ''}
-                        <button class="absolute bottom-4 right-4 w-12 h-12 bg-[#c4a882] rounded-full shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-[#d4c4ab] hover:scale-110 text-[#0a0a0b] font-bold z-10 add-to-cart-btn" data-id="${product.id}">
-                            <span>🛒</span>
-                        </button>
+                    <div class="glass-card cursor-pointer" onclick="navigateTo('customize')">
+                        <div class="relative overflow-hidden h-56"><img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=800&q=80" alt="تخصيص" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" onerror="this.src='https://placehold.co/800x500/161618/c4a882?text=🎨'"><div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0b] via-transparent to-transparent"></div></div>
+                        <div class="p-8"><h3 class="text-2xl font-bold text-white mb-3">🎨 تخصيص كامل</h3><p class="text-[#8a847c] text-sm mb-5 leading-relaxed">صمم باقتك بنفسك: اختر الألوان، الأشكال، الأحجام وبطاقة المعايدة.</p><span class="btn-gold btn-sm">خصص الآن</span></div>
                     </div>
-                    <div class="p-5 space-y-3 border-t border-[#222225]">
-                        <h3 class="text-lg serif text-[#e8e4df]">${product.name}</h3>
-                        <p class="text-xs text-[#8a847c]">${product.desc}</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-lg serif text-[#c4a882] font-semibold">${product.price.toLocaleString()} د.ج</span>
-                            <div class="flex text-[#c4a882] text-sm">${'★'.repeat(product.rating)}${product.rating < 5 ? '☆'.repeat(5 - product.rating) : ''}</div>
-                        </div>
-                        <button class="elegant-btn-outline w-full text-xs add-to-cart-btn" data-id="${product.id}">أضف إلى السلة</button>
+                    <div class="glass-card cursor-pointer" onclick="navigateTo('events')">
+                        <div class="relative overflow-hidden h-56"><img src="https://images.unsplash.com/photo-1510076857177-7470076d4098?w=800&q=80" alt="مناسبات" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" onerror="this.src='https://placehold.co/800x500/161618/c4a882?text=🎉'"><div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0b] via-transparent to-transparent"></div></div>
+                        <div class="p-8"><h3 class="text-2xl font-bold text-white mb-3">🎉 المناسبات</h3><p class="text-[#8a847c] text-sm mb-5 leading-relaxed">تنسيق كامل لحفلات الزفاف، أعياد الميلاد، والمناسبات الخاصة.</p><span class="btn-gold btn-sm">اعرف المزيد</span></div>
                     </div>
                 </div>
-            `);
-            
-            document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const id = parseInt(this.dataset.id);
-                    addToCart(id);
-                });
-            });
-            
-            const loadMoreBtn = document.getElementById('load-more-btn');
-            if (loadMoreBtn) {
-                loadMoreBtn.style.display = filteredProducts.length <= limit ? 'none' : 'inline-block';
+            </div>
+        </section>
+
+        <section class="py-24 px-4 lg:px-8 bg-[#0a0a0b]">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="section-heading serif">آراء <span class="italic text-[#c4a882]">عملائنا</span></h2>
+                <p class="section-subheading">ماذا يقول عملاؤنا عن تجربتهم مع فلورا إكسكويزيت</p>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="glass-card p-10 text-center"><div class="stars text-2xl mb-5">★★★★★</div><p class="text-[#c4bfb8] mb-5 leading-relaxed">"أجمل باقة ورد استلمتها في حياتي! التغليف كان رائعاً والتوصيل في نفس اليوم. شكراً من القلب!"</p><p class="text-[#c4a882] font-bold text-lg">سارة بن علي</p><p class="text-[#8a847c] text-xs">الجزائر العاصمة</p></div>
+                    <div class="glass-card p-10 text-center"><div class="stars text-2xl mb-5">★★★★★</div><p class="text-[#c4bfb8] mb-5 leading-relaxed">"خدمة التخصيص أكثر من رائعة. اخترت كل التفاصيل وطلع الطلب بالضبط مثل ما تخيلت."</p><p class="text-[#c4a882] font-bold text-lg">أحمد محمود</p><p class="text-[#8a847c] text-xs">وهران</p></div>
+                    <div class="glass-card p-10 text-center"><div class="stars text-2xl mb-5">★★★★★</div><p class="text-[#c4bfb8] mb-5 leading-relaxed">"أفضل متجر هدايا في الجزائر. الشوكولاتة بلجيكية أصلية والتوصيل سريع جداً. أنصح به بشدة!"</p><p class="text-[#c4a882] font-bold text-lg">مريم قادري</p><p class="text-[#8a847c] text-xs">قسنطينة</p></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== الصفحة 2: المتجر ==================== -->
+    <div id="page-shop" class="page">
+        <section class="py-20 px-4 lg:px-8 bg-[#0a0a0b] min-h-screen">
+            <div class="max-w-7xl mx-auto pt-8">
+                <p class="text-xs text-[#c4a882] tracking-[0.35em] text-center mb-4">✦ متجر فلورا إكسكويزيت ✦</p>
+                <h2 class="section-heading serif">تشكيلات <span class="italic text-[#c4a882]">مميزة</span></h2>
+                <p class="section-subheading">اضغط على أي منتج لمشاهدة التفاصيل الكاملة واختيار المواصفات</p>
+                
+                <div class="flex flex-wrap justify-center gap-2 mb-14">
+                    <button class="cat-pill active" onclick="filterProducts('all', this)">🌟 الكل</button>
+                    <button class="cat-pill" onclick="filterProducts('flowers', this)">💐 باقات الورد</button>
+                    <button class="cat-pill" onclick="filterProducts('gifts', this)">🎁 هدايا</button>
+                    <button class="cat-pill" onclick="filterProducts('chocolate', this)">🍫 شوكولاتة</button>
+                    <button class="cat-pill" onclick="filterProducts('perfume', this)">✨ عطور</button>
+                    <button class="cat-pill" onclick="filterProducts('balloons', this)">🎈 بالونات</button>
+                    <button class="cat-pill" onclick="filterProducts('baskets', this)">🧺 سلال</button>
+                </div>
+
+                <div class="product-grid" id="productsGrid"></div>
+                
+                <div class="text-center mt-16">
+                    <p class="text-[#8a847c] mb-5">لم تجد ما تبحث عنه؟</p>
+                    <button onclick="navigateTo('customize')" class="btn-outline-gold btn-lg">🎨 اصنع طلبك المخصص</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== الصفحة 3: تفاصيل المنتج ==================== -->
+    <div id="page-product-detail" class="page">
+        <section class="py-20 px-4 lg:px-8 bg-[#0a0a0b] min-h-screen">
+            <div class="max-w-6xl mx-auto pt-8" id="productDetailContent"></div>
+        </section>
+    </div>
+
+    <!-- ==================== الصفحة 4: تخصيص ==================== -->
+    <div id="page-customize" class="page">
+        <section class="py-20 px-4 lg:px-8 bg-[#0a0a0b] min-h-screen">
+            <div class="max-w-5xl mx-auto pt-8">
+                <p class="text-xs text-[#c4a882] tracking-[0.35em] text-center mb-4">🎨 مصمم الباقات الشخصي</p>
+                <h2 class="section-heading serif">صمم <span class="italic text-[#c4a882]">باقتك</span> بنفسك</h2>
+                <p class="section-subheading">اختر كل التفاصيل التي تريدها وسنتولى نحن الباقي</p>
+                
+                <div class="glass-card-lg p-8 md:p-14 space-y-10">
+                    <div><h3 class="text-xl font-bold text-white mb-4"><span class="text-[#c4a882] text-2xl">1.</span> اختر المنتج الأساسي</h3><select id="customProduct" class="input-dark" onchange="updateCustomPreview()"><option value="">-- اختر من القائمة --</option><option value="باقة ورد ملكي (50 وردة)">💐 باقة ورد ملكي (50 وردة) - 8,500 د.ج</option><option value="باقة ورد ملكي (100 وردة)">💐 باقة ورد ملكي (100 وردة) - 15,000 د.ج</option><option value="علبة هدايا فاخرة">🎁 علبة هدايا فاخرة - 14,500 د.ج</option><option value="باقة توليب هولندي">🌷 باقة توليب هولندي - 10,500 د.ج</option><option value="سلة هدايا راقية">🧺 سلة هدايا راقية - 12,000 د.ج</option></select></div>
+                    <div id="customizeColorSection"></div>
+                    <div id="customizeShapeSection"></div>
+                    <div id="customizeSizeSection"></div>
+                    <div><h3 class="text-xl font-bold text-white mb-4"><span class="text-[#c4a882] text-2xl">5.</span> نص بطاقة المعايدة</h3><textarea id="customCard" rows="2" placeholder="اكتب رسالتك للبطاقة المرفقة..." class="input-dark"></textarea></div>
+                    <div><h3 class="text-xl font-bold text-white mb-4"><span class="text-[#c4a882] text-2xl">6.</span> ملاحظات إضافية</h3><textarea id="customNotes" rows="3" placeholder="أي طلبات خاصة أو ملاحظات..." class="input-dark"></textarea></div>
+                    <div id="customSummary" class="bg-[#111] rounded-2xl p-8 border border-[#222] hidden"><h4 class="text-lg font-bold text-white mb-5">📋 ملخص طلبك المخصص</h4><div class="space-y-3 text-[#8a847c]" id="summaryContent"></div></div>
+                    <div class="flex flex-wrap gap-5 justify-center pt-6">
+                        <button onclick="addCustomToCart()" class="btn-gold btn-lg"><i class="fas fa-cart-plus ml-2"></i> أضف إلى السلة</button>
+                        <button onclick="orderCustomViaWhatsapp()" class="btn-outline-gold btn-lg"><i class="fab fa-whatsapp ml-2"></i> اطلب عبر واتساب</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== الصفحة 5: تزيين السيارات ==================== -->
+    <div id="page-cars" class="page">
+        <section class="py-20 px-4 lg:px-8 bg-[#0a0a0b] min-h-screen">
+            <div class="max-w-7xl mx-auto pt-8">
+                <p class="text-xs text-[#c4a882] tracking-[0.35em] text-center mb-4">🚗 خدمة متميزة</p>
+                <h2 class="section-heading serif">تزيين <span class="italic text-[#c4a882]">السيارات</span></h2>
+                <p class="section-subheading">زينة فاخرة لمواكب الأفراح والمناسبات الخاصة</p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="glass-card"><img src="https://static.hiamag.com/styles/autox754/public/article/01/04/2017/5244681-1536371157.jpg" alt="العروس" class="w-full h-72 object-cover" onerror="this.src='https://placehold.co/800x600/161618/c4a882?text=🚗'"><div class="p-10"><h3 class="text-2xl serif text-white mb-4">باقة العروس الفاخرة</h3><p class="text-[#8a847c] mb-4 leading-relaxed">تزيين كامل لسيارة العروس بأفخم أنواع الورود الطبيعية المستوردة مع إكسسوارات فاخرة وتول وأورجانزا.</p><ul class="text-sm text-[#8a847c] mb-6 space-y-2"><li>✅ ورود طبيعية مستوردة</li><li>✅ إكسسوارات فاخرة</li><li>✅ تول وأورجانزا</li><li>✅ تركيب احترافي</li></ul><p class="text-3xl serif text-[#c4a882] font-bold mb-6">من 15,000 د.ج</p><button onclick="navigateTo('customize')" class="btn-gold w-full mb-4">🎨 خصص الألوان</button><a href="https://wa.me/213555123456" target="_blank" class="btn-outline-gold w-full block text-center">💬 استفسر واتساب</a></div></div>
+                    <div class="glass-card"><img src="https://carsrentl.icu/wp-content/uploads/2024/06/%D8%B1%D8%B1.jpeg" alt="موكب" class="w-full h-72 object-cover" onerror="this.src='https://placehold.co/800x600/161618/c4a882?text=🚗'"><div class="p-10"><h3 class="text-2xl serif text-white mb-4">موكب الزفاف الكامل</h3><p class="text-[#8a847c] mb-4 leading-relaxed">تنسيق متكامل لموكب السيارات بالكامل بتصميم موحد وأنيق يشمل جميع مركبات الموكب.</p><ul class="text-sm text-[#8a847c] mb-6 space-y-2"><li>✅ تزيين حتى 10 سيارات</li><li>✅ تصميم موحد وأنيق</li><li>✅ تركيب وإزالة</li><li>✅ إشراف كامل يوم الزفاف</li></ul><p class="text-3xl serif text-[#c4a882] font-bold mb-6">من 50,000 د.ج</p><button onclick="navigateTo('customize')" class="btn-gold w-full mb-4">🎨 خصص الألوان</button><a href="https://wa.me/213555123456" target="_blank" class="btn-outline-gold w-full block text-center">💬 استفسر واتساب</a></div></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== الصفحة 6: الحدائق ==================== -->
+    <div id="page-gardens" class="page">
+        <section class="py-20 px-4 lg:px-8 bg-[#0a0a0b] min-h-screen">
+            <div class="max-w-7xl mx-auto pt-8">
+                <p class="text-xs text-[#c4a882] tracking-[0.35em] text-center mb-4">🌿 خدمات خضراء</p>
+                <h2 class="section-heading serif">تنسيق <span class="italic text-[#c4a882]">الحدائق</span></h2>
+                <p class="section-subtitle">نحول المساحات الخضراء إلى جنان ساحرة</p>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="glass-card"><img src="https://mamlakatalzuhur.com/wp-content/uploads/2023/05/Home-Garden-Landscaping-MamlakatAlzuhur.com_.webp" alt="منزلية" class="w-full h-56 object-cover" onerror="this.src='https://placehold.co/600x450/161618/c4a882?text=🌿'"><div class="p-8 text-center"><h3 class="text-xl font-bold text-white mb-3">🌻 حدائق منزلية</h3><p class="text-[#8a847c] text-sm mb-5 leading-relaxed">تصميم وتنسيق حدائق الفلل والمنازل بأسلوب عصري وجذاب.</p><a href="https://wa.me/213555123456" target="_blank" class="btn-gold btn-sm">استفسر الآن</a></div></div>
+                    <div class="glass-card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQR4mSScagNCHcNojPOoyTcvWG5S2YchgUzM8Xb1sA3Pxwb43NH-Yboc3k&s=10" alt="عامة" class="w-full h-56 object-cover" onerror="this.src='https://placehold.co/600x450/161618/c4a882?text=🏢'"><div class="p-8 text-center"><h3 class="text-xl font-bold text-white mb-3">🏢 مساحات عامة</h3><p class="text-[#8a847c] text-sm mb-5 leading-relaxed">تنسيق حدائق الفنادق والمطاعم والشركات باحترافية.</p><a href="https://wa.me/213555123456" target="_blank" class="btn-gold btn-sm">استفسر الآن</a></div></div>
+                    <div class="glass-card"><img src="https://s.alicdn.com/@sc04/kf/H69c17bdddb27448394526fff3b76df04w/High-Quality-Artificial-Plants-Bent-Artificial-Palm-Trees-and-Fan-Palms-for-House-or-Office-Decor-Plastic-Birthday-Ornament.jpg_300x300.jpg" alt="نخيل" class="w-full h-56 object-cover" onerror="this.src='https://placehold.co/600x450/161618/c4a882?text=🌴'"><div class="p-8 text-center"><h3 class="text-xl font-bold text-white mb-3">🌴 نخيل وأشجار</h3><p class="text-[#8a847c] text-sm mb-5 leading-relaxed">توريد وتركيب أشجار النخيل والزينة بجميع أنواعها.</p><a href="https://wa.me/213555123456" target="_blank" class="btn-gold btn-sm">استفسر الآن</a></div></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== الصفحة 7: المناسبات ==================== -->
+    <div id="page-events" class="page">
+        <section class="py-20 px-4 lg:px-8 bg-[#0a0a0b] min-h-screen">
+            <div class="max-w-7xl mx-auto pt-8">
+                <p class="text-xs text-[#c4a882] tracking-[0.35em] text-center mb-4">🎉 لكل مناسبة</p>
+                <h2 class="section-heading serif">تنسيق <span class="italic text-[#c4a882]">المناسبات</span></h2>
+                <p class="section-subtitle">نجعل مناسبتك لا تُنسى مع خدماتنا المتكاملة</p>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="glass-card p-10 text-center"><span class="text-7xl block mb-6">💒</span><h3 class="text-2xl font-bold text-white mb-4">حفلات الزفاف</h3><p class="text-[#8a847c] text-sm mb-6 leading-relaxed">تنسيق كامل لقاعة الزفاف، باقات العرائس، وتزيين الكوشة.</p><a href="https://wa.me/213555123456" target="_blank" class="btn-gold btn-sm">احجز استشارة</a></div>
+                    <div class="glass-card p-10 text-center"><span class="text-7xl block mb-6">🎂</span><h3 class="text-2xl font-bold text-white mb-4">أعياد الميلاد</h3><p class="text-[#8a847c] text-sm mb-6 leading-relaxed">بالونات هيليوم، زينة احتفالية، وباقات ورد مميزة.</p><a href="https://wa.me/213555123456" target="_blank" class="btn-gold btn-sm">اطلب الآن</a></div>
+                    <div class="glass-card p-10 text-center"><span class="text-7xl block mb-6">💝</span><h3 class="text-2xl font-bold text-white mb-4">عيد الحب</h3><p class="text-[#8a847c] text-sm mb-6 leading-relaxed">باقات ورد حمراء فاخرة، شوكولاتة، وهدايا رومانسية.</p><a href="https://wa.me/213555123456" target="_blank" class="btn-gold btn-sm">اطلب الآن</a></div>
+                    <div class="glass-card p-10 text-center"><span class="text-7xl block mb-6">🎓</span><h3 class="text-2xl font-bold text-white mb-4">حفلات التخرج</h3><p class="text-[#8a847c] text-sm mb-6 leading-relaxed">باقات تخرج مميزة، بالونات، وزينة احتفالية راقية.</p><a href="https://wa.me/213555123456" target="_blank" class="btn-gold btn-sm">اطلب الآن</a></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== الصفحة 8: اتصل بنا ==================== -->
+    <div id="page-contact" class="page">
+        <section class="py-20 px-4 lg:px-8 bg-[#0a0a0b] min-h-screen">
+            <div class="max-w-5xl mx-auto pt-8">
+                <p class="text-xs text-[#c4a882] tracking-[0.35em] text-center mb-4">📞 خدمة العملاء</p>
+                <h2 class="section-heading serif">تواصل <span class="italic text-[#c4a882]">معنا</span></h2>
+                <p class="section-subtitle">نحن هنا لخدمتك على مدار الساعة</p>
+                
+                <div class="glass-card-lg p-10 md:p-14 mb-12">
+                    <div class="grid md:grid-cols-2 gap-6 mb-6"><input type="text" id="contactName" placeholder="الاسم الكامل *" class="input-dark"><input type="tel" id="contactPhone" placeholder="رقم الهاتف *" class="input-dark"></div>
+                    <input type="email" id="contactEmail" placeholder="البريد الإلكتروني (اختياري)" class="input-dark mb-6">
+                    <select id="contactSubject" class="input-dark mb-6"><option value="">-- موضوع الرسالة --</option><option value="استفسار عام">استفسار عام</option><option value="طلب عرض سعر">طلب عرض سعر</option><option value="متابعة طلب">متابعة طلب</option><option value="شكوى أو اقتراح">شكوى أو اقتراح</option></select>
+                    <textarea id="contactMessage" rows="5" placeholder="اكتب رسالتك هنا... *" class="input-dark mb-6"></textarea>
+                    <button onclick="submitContact()" class="btn-gold w-full btn-lg"><i class="fas fa-paper-plane ml-2"></i> إرسال الرسالة</button>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="glass-card p-10 text-center"><span class="text-6xl block mb-5">📍</span><h4 class="text-white font-bold text-lg mb-3">العنوان</h4><p class="text-[#8a847c] text-sm leading-relaxed">شارع ديدوش مراد،<br>الجزائر العاصمة</p></div>
+                    <div class="glass-card p-10 text-center cursor-pointer" onclick="copyPhone()"><span class="text-6xl block mb-5">📞</span><h4 class="text-white font-bold text-lg mb-3">الهاتف</h4><p class="text-[#c4a882] text-lg font-bold" id="phoneNumber">+213 555 123 456</p><p class="text-[#8a847c] text-xs mt-2">اضغط للنسخ</p></div>
+                    <div class="glass-card p-10 text-center"><span class="text-6xl block mb-5">🕐</span><h4 class="text-white font-bold text-lg mb-3">ساعات العمل</h4><p class="text-[#8a847c] text-sm leading-relaxed">السبت - الخميس<br>9:00 صباحاً - 8:00 مساءً</p></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== تذييل ==================== -->
+    <footer class="py-12 px-4 lg:px-8 border-t border-[#1a1a1d] bg-[#0a0a0b]">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="flex items-center justify-center gap-3 mb-5">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-rose-300 via-amber-200 to-emerald-300 flex items-center justify-center"><span class="text-lg">🌸</span></div>
+                <span class="text-2xl serif text-[#d4c4ab]">FLORA EXQUISITE</span>
+            </div>
+            <p class="text-[#8a847c] text-sm mb-6">© 2024 فلورا إكسكويزيت - جميع الحقوق محفوظة | الجزائر</p>
+            <div class="flex justify-center gap-8 flex-wrap">
+                <button onclick="navigateTo('home')" class="text-[#8a847c] hover:text-[#c4a882] text-sm bg-transparent border-none cursor-pointer transition-colors">الرئيسية</button>
+                <button onclick="navigateTo('shop')" class="text-[#8a847c] hover:text-[#c4a882] text-sm bg-transparent border-none cursor-pointer transition-colors">المتجر</button>
+                <button onclick="navigateTo('customize')" class="text-[#8a847c] hover:text-[#c4a882] text-sm bg-transparent border-none cursor-pointer transition-colors">التخصيص</button>
+                <button onclick="navigateTo('cars')" class="text-[#8a847c] hover:text-[#c4a882] text-sm bg-transparent border-none cursor-pointer transition-colors">السيارات</button>
+                <button onclick="navigateTo('gardens')" class="text-[#8a847c] hover:text-[#c4a882] text-sm bg-transparent border-none cursor-pointer transition-colors">الحدائق</button>
+                <button onclick="navigateTo('events')" class="text-[#8a847c] hover:text-[#c4a882] text-sm bg-transparent border-none cursor-pointer transition-colors">المناسبات</button>
+                <button onclick="navigateTo('contact')" class="text-[#8a847c] hover:text-[#c4a882] text-sm bg-transparent border-none cursor-pointer transition-colors">تواصل</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- أيقونات عائمة -->
+    <a href="https://wa.me/213555123456" target="_blank" class="fab-whatsapp" title="تواصل واتساب"><i class="fab fa-whatsapp"></i></a>
+    <div class="fab-cart" onclick="toggleCart()"><i class="fas fa-shopping-bag"></i><span class="cart-badge-mini" id="cartBadge">0</span></div>
+
+    <!-- مودال السلة -->
+    <div class="modal-backdrop" id="cartOverlay" onclick="toggleCart()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center mb-8"><h3 class="text-2xl serif text-white">🛒 سلة التسوق</h3><button onclick="toggleCart()" class="text-[#8a847c] text-3xl hover:text-white transition-colors">✕</button></div>
+            <div id="cartItems" class="space-y-4"><p class="text-[#5c5852] text-center py-16">السلة فارغة</p></div>
+            <div id="cartTotal" class="mt-8 pt-8 border-t border-[#222] hidden">
+                <div class="flex justify-between text-white mb-5 text-xl"><span>المجموع الكلي:</span><span id="totalPrice" class="text-[#c4a882] font-bold text-2xl">0 د.ج</span></div>
+                <a id="whatsappOrderBtn" href="#" target="_blank" class="btn-gold w-full text-center block btn-lg"><i class="fab fa-whatsapp ml-2"></i> إتمام الطلب عبر واتساب</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- تنبيه -->
+    <div class="toast-bar" id="successToast">✅ تمت الإضافة إلى السلة!</div>
+
+    <script>
+        const products = [
+            { id: 1, name: 'باقة الورد الملكي', desc: '50 وردة طبيعية مختارة من أجود الأنواع العالمية مع تغليف ملكي فاخر', price: 8500, image: 'https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=800&q=80', category: 'flowers', sizes: ['25 وردة (5,500 د.ج)', '50 وردة (8,500 د.ج)', '100 وردة (15,000 د.ج)'], rating: 5, badge: 'hot' },
+            { id: 2, name: 'علبة الهدايا الفاخرة', desc: 'باقة ورد صغيرة + شوكولاتة بلجيكية 24 قطعة + عطر فرنسي 50 مل في علبة خشبية', price: 14500, image: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=800&q=80', category: 'gifts', sizes: ['العلبة الأساسية (14,500 د.ج)', 'العلبة الفاخرة مع سوار فضة (19,500 د.ج)'], rating: 5, badge: 'luxe' },
+            { id: 3, name: 'شوكولاتة بلجيكية أصلية', desc: 'علبة 24 قطعة شوكولاتة بلجيكية فاخرة مع تغليف أنيق ورسالة مخصصة', price: 9500, image: 'https://images.unsplash.com/photo-1481391319762-47dff72954d9?w=800&q=80', category: 'chocolate', sizes: ['12 قطعة (5,500 د.ج)', '24 قطعة (9,500 د.ج)', '48 قطعة (17,000 د.ج)'], rating: 5 },
+            { id: 4, name: 'باقة التوليب الهولندي', desc: 'توليب ملون طازج مستورد مباشرة من مزارع هولندا مع تغليف أنيق', price: 10500, image: 'https://images.unsplash.com/photo-1527061011665-3652c757a4d4?w=800&q=80', category: 'flowers', sizes: ['15 زهرة (6,500 د.ج)', '30 زهرة (10,500 د.ج)', '50 زهرة (16,000 د.ج)'], rating: 4, badge: 'new' },
+            { id: 5, name: 'عطر فرنسي فاخر', desc: 'عطر فرنسي أصلي 100 مل من أفخم الماركات العالمية في علبة هدايا', price: 16500, image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&q=80', category: 'perfume', sizes: ['50 مل (9,500 د.ج)', '100 مل (16,500 د.ج)'], rating: 5, badge: 'luxe' },
+            { id: 6, name: 'سلة الفواكه الفاخرة', desc: 'تشكيلة فواكه موسمية طازجة مع تغليف راقٍ وشريط ستان', price: 8000, image: 'https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=800&q=80', category: 'baskets', sizes: ['سلة وسط (5,000 د.ج)', 'سلة كبيرة (8,000 د.ج)'], rating: 4 },
+            { id: 7, name: 'دمية مع باقة ورد', desc: 'دمية ناعمة فاخرة مع باقة ورد طبيعي صغيرة وتغليف هدايا', price: 11000, image: 'https://images.unsplash.com/photo-1513885535751-8b9238bd345a?w=800&q=80', category: 'gifts', sizes: ['دمية 40 سم (11,000 د.ج)', 'دمية 60 سم (13,000 د.ج)'], rating: 5 },
+            { id: 8, name: 'علبة شوكولاتة سويسرية', desc: '36 قطعة شوكولاتة سويسرية فاخرة في علبة خشبية محفورة', price: 12500, image: 'https://images.unsplash.com/photo-1511381939415-e44015466834?w=800&q=80', category: 'chocolate', sizes: ['18 قطعة (7,000 د.ج)', '36 قطعة (12,500 د.ج)'], rating: 5, badge: 'hot' },
+            { id: 9, name: 'باقة الأوركيد الأبيض', desc: 'أوركيد طبيعي فاخر مع مزهرية كريستال وتغليف راقٍ', price: 19500, image: 'https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=800&q=80', category: 'flowers', sizes: ['فرع واحد (11,000 د.ج)', '3 فروع (19,500 د.ج)'], rating: 5, badge: 'luxe' },
+            { id: 10, name: 'مجموعة الشموع المعطرة', desc: '3 شموع فاخرة معطرة بروائح طبيعية مع حامل خشبي أنيق', price: 8500, image: 'https://images.unsplash.com/photo-1602028915047-37269d1a73f7?w=800&q=80', category: 'gifts', sizes: ['3 شموع (8,500 د.ج)', '6 شموع (15,000 د.ج)'], rating: 4 },
+            { id: 11, name: 'باقة ورد جوري معطر', desc: 'ورود جورية طبيعية معطرة طازجة من أفضل المشاتل المحلية', price: 6000, image: 'https://images.unsplash.com/photo-1490750967868-88aa4f44baee?w=800&q=80', category: 'flowers', sizes: ['12 وردة (3,500 د.ج)', '24 وردة (6,000 د.ج)', '48 وردة (10,500 د.ج)'], rating: 5 },
+            { id: 12, name: 'بالونات هيليوم ملونة', desc: 'مجموعة بالونات هيليوم عالية الجودة مع شريط ستان أنيق', price: 4500, image: 'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=800&q=80', category: 'balloons', sizes: ['10 بالونات (4,500 د.ج)', '25 بالونة (8,000 د.ج)', '50 بالونة (14,000 د.ج)'], rating: 4 },
+            { id: 13, name: 'سلة الحلويات الجزائرية', desc: 'تشكيلة من أفخر الحلويات التقليدية الجزائرية مع تغليف تراثي', price: 7000, image: 'https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=800&q=80', category: 'baskets', sizes: ['سلة وسط (7,000 د.ج)', 'سلة كبيرة (12,000 د.ج)'], rating: 5, badge: 'hot' },
+            { id: 14, name: 'باقة لافندر فرنسي', desc: 'خزامى فرنسي طبيعي معطر برائحة زكية تدوم طويلاً', price: 9000, image: 'https://images.unsplash.com/photo-1499002238440-d264edd596ec?w=800&q=80', category: 'flowers', sizes: ['باقة صغيرة (5,000 د.ج)', 'باقة كبيرة (9,000 د.ج)'], rating: 4, badge: 'new' },
+            { id: 15, name: 'صندوق العناية الفاخر', desc: 'مجموعة منتجات عناية طبيعية فاخرة للبشرة مع زيوت عطرية', price: 18000, image: 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=800&q=80', category: 'gifts', sizes: ['المجموعة الأساسية (18,000 د.ج)', 'المجموعة الفاخرة (25,000 د.ج)'], rating: 5, badge: 'luxe' },
+            { id: 16, name: 'بالونات قلوب رومانسية', desc: 'بالونات على شكل قلب مع عبارات حب ورومانسية جميلة', price: 5500, image: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&q=80', category: 'balloons', sizes: ['5 بالونات (5,500 د.ج)', '15 بالونة (12,000 د.ج)'], rating: 5 },
+        ];
+
+        const colors = [
+            { name: 'أحمر', hex: '#e74c3c' }, { name: 'وردي', hex: '#e91e63' }, { name: 'وردي فاتح', hex: '#f8bbd0' },
+            { name: 'أبيض', hex: '#ffffff' }, { name: 'عاجي', hex: '#fff3e0' }, { name: 'بنفسجي', hex: '#9c27b0' },
+            { name: 'أزرق ملكي', hex: '#2196f3' }, { name: 'برتقالي', hex: '#ff9800' }, { name: 'أصفر', hex: '#ffeb3b' },
+            { name: 'ذهبي', hex: '#c4a882' }, { name: 'روز', hex: '#d4a5a5' }, { name: 'أخضر زمردي', hex: '#4caf50' },
+            { name: 'سماوي', hex: '#87ceeb' }, { name: 'أرجواني', hex: '#6a1b9a' }, { name: 'خمري', hex: '#800020' },
+        ];
+
+        const shapes = ['دائري كلاسيكي', 'مربع أنيق', 'قلب رومانسي', 'طولي عصري', 'هرمي فاخر', 'سلة طبيعية', 'بوكيه دائري', 'صندوق خشبي', 'مزهرية كريستال', 'تصميم حر'];
+
+        let cart = [], currentFilter = 'all', selectedColor = null, selectedShape = null, selectedSize = null, currentProductDetail = null;
+
+        function navigateTo(pageName, productId = null) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            if (pageName === 'product-detail' && productId) { document.getElementById('page-product-detail').classList.add('active'); renderProductDetail(productId); }
+            else { const t = document.getElementById(`page-${pageName}`); if (t) t.classList.add('active'); }
+            document.querySelectorAll('.nav-link').forEach(l => { l.classList.remove('active'); if (l.dataset.page === pageName || (pageName === 'product-detail' && l.dataset.page === 'shop')) l.classList.add('active'); });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (pageName === 'shop') renderProducts(currentFilter);
+            if (pageName === 'customize') renderCustomizeOptions();
+        }
+
+        function renderProducts(filter = 'all') {
+            const grid = document.getElementById('productsGrid');
+            if (!grid) return;
+            let filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+            grid.innerHTML = filtered.map(p => `
+                <div class="glass-card-sm cursor-pointer" onclick="navigateTo('product-detail', ${p.id})">
+                    <div class="aspect-square overflow-hidden relative">
+                        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" onerror="this.src='https://placehold.co/500x500/161618/c4a882?text=🌸'">
+                        ${p.badge?`<span class="absolute top-4 right-4 ${p.badge==='new'?'badge-new':p.badge==='hot'?'badge-hot':'badge-luxe'}">${p.badge==='new'?'جديد':p.badge==='hot'?'الأكثر طلباً':'فاخر'}</span>`:''}
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-white font-bold text-lg mb-2">${p.name}</h3>
+                        <p class="text-[#8a847c] text-xs mb-4 line-clamp-2 leading-relaxed">${p.desc}</p>
+                        <div class="stars mb-4">${'★'.repeat(p.rating)}${p.rating<5?'☆'.repeat(5-p.rating):''}</div>
+                        <span class="text-2xl font-bold text-[#c4a882] block mb-4">${p.price.toLocaleString()} د.ج</span>
+                        <div class="flex gap-2">
+                            <button onclick="event.stopPropagation(); addToCart(${p.id})" class="btn-gold btn-sm flex-1"><i class="fas fa-cart-plus ml-1"></i> أضف</button>
+                            <button onclick="event.stopPropagation(); navigateTo('product-detail', ${p.id})" class="btn-outline-gold btn-sm"><i class="fas fa-eye ml-1"></i> تفاصيل</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderProductDetail(productId) {
+            const p = products.find(x => x.id === productId);
+            if (!p) return;
+            currentProductDetail = p; selectedColor = null; selectedShape = null; selectedSize = null;
+            document.getElementById('productDetailContent').innerHTML = `
+                <button onclick="navigateTo('shop')" class="text-[#c4a882] hover:text-white mb-10 flex items-center gap-2 transition-colors text-lg"><i class="fas fa-arrow-right"></i> العودة للمتجر</button>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="relative"><img src="${p.image}" alt="${p.name}" class="w-full rounded-3xl object-cover aspect-square shadow-2xl" onerror="this.src='https://placehold.co/700x700/161618/c4a882?text=🌸'">${p.badge?`<span class="absolute top-5 right-5 ${p.badge==='new'?'badge-new':p.badge==='hot'?'badge-hot':'badge-luxe'} text-sm px-5 py-1.5">${p.badge==='new'?'جديد':p.badge==='hot'?'الأكثر طلباً':'فاخر'}</span>`:''}</div>
+                    <div class="space-y-7">
+                        <p class="text-xs text-[#c4a882] tracking-widest">${getCategoryName(p.category)}</p>
+                        <h1 class="text-4xl md:text-5xl serif text-white">${p.name}</h1>
+                        <div class="stars text-xl">${'★'.repeat(p.rating)}${p.rating<5?'☆'.repeat(5-p.rating):''} <span class="text-[#8a847c] text-base mr-2">(${p.rating}.0)</span></div>
+                        <p class="text-[#8a847c] text-base leading-relaxed">${p.desc}</p>
+                        <p class="text-5xl serif text-[#c4a882] font-bold">${p.price.toLocaleString()} د.ج</p>
+                        ${p.sizes?`<div><h4 class="text-white font-bold mb-4"><i class="fas fa-ruler ml-2"></i> اختر الحجم:</h4><div class="flex flex-wrap gap-2" id="detailSizeOptions">${p.sizes.map(s=>`<div class="size-chip" data-size="${s}" onclick="selectDetailSize(this)">${s}</div>`).join('')}</div><p class="text-[#8a847c] text-xs mt-3" id="detailSelectedSize">لم تختر الحجم بعد</p></div>`:''}
+                        <div><h4 class="text-white font-bold mb-4"><i class="fas fa-palette ml-2"></i> اختر اللون:</h4><div class="flex flex-wrap gap-2" id="detailColorOptions">${colors.map(c=>`<div class="color-swatch" style="background:${c.hex};${c.name==='أبيض'?'border:2px solid #555;':''}" data-color="${c.name}" data-hex="${c.hex}" onclick="selectDetailColor(this)" title="${c.name}"></div>`).join('')}</div><p class="text-[#8a847c] text-xs mt-3" id="detailSelectedColor">لم تختر لوناً بعد</p></div>
+                        <div><h4 class="text-white font-bold mb-4"><i class="fas fa-shapes ml-2"></i> اختر شكل التغليف:</h4><div class="grid grid-cols-2 gap-2" id="detailShapeOptions">${shapes.map(s=>`<div class="shape-chip" data-shape="${s}" onclick="selectDetailShape(this)">${getShapeEmoji(s)} ${s}</div>`).join('')}</div><p class="text-[#8a847c] text-xs mt-3" id="detailSelectedShape">لم تختر شكلاً بعد</p></div>
+                        <div><h4 class="text-white font-bold mb-4"><i class="fas fa-hashtag ml-2"></i> الكمية:</h4><div class="flex items-center gap-3"><button class="qty-btn" onclick="changeDetailQuantity(-1)">−</button><input type="number" id="detailQuantity" class="qty-display" value="1" min="1" readonly><button class="qty-btn" onclick="changeDetailQuantity(1)">+</button></div></div>
+                        <div class="flex flex-wrap gap-5 pt-6"><button onclick="addDetailToCart()" class="btn-gold btn-lg flex-1"><i class="fas fa-cart-plus ml-2"></i> أضف إلى السلة</button><button onclick="orderDetailViaWhatsapp()" class="btn-outline-gold btn-lg"><i class="fab fa-whatsapp ml-2"></i> واتساب</button></div>
+                    </div>
+                </div>`;
+        }
+
+        function getCategoryName(c) { const n={flowers:'💐 باقات الورد',gifts:'🎁 هدايا',chocolate:'🍫 شوكولاتة',perfume:'✨ عطور',balloons:'🎈 بالونات',baskets:'🧺 سلال'}; return n[c]||c; }
+        function getShapeEmoji(s) { const e={'دائري كلاسيكي':'🔵','مربع أنيق':'🟫','قلب رومانسي':'❤️','طولي عصري':'📏','هرمي فاخر':'🔺','سلة طبيعية':'🧺','بوكيه دائري':'💐','صندوق خشبي':'📦','مزهرية كريستال':'🏺','تصميم حر':'✨'}; return e[s]||''; }
+
+        function selectDetailColor(el) { document.querySelectorAll('#detailColorOptions .color-swatch').forEach(o=>o.classList.remove('picked')); el.classList.add('picked'); selectedColor={name:el.dataset.color,hex:el.dataset.hex}; document.getElementById('detailSelectedColor').textContent=`✅ تم اختيار: ${selectedColor.name}`; document.getElementById('detailSelectedColor').style.color=selectedColor.hex; }
+        function selectDetailShape(el) { document.querySelectorAll('#detailShapeOptions .shape-chip').forEach(o=>o.classList.remove('chosen')); el.classList.add('chosen'); selectedShape=el.dataset.shape; document.getElementById('detailSelectedShape').textContent=`✅ ${selectedShape}`; }
+        function selectDetailSize(el) { document.querySelectorAll('#detailSizeOptions .size-chip').forEach(o=>o.classList.remove('chosen')); el.classList.add('chosen'); selectedSize=el.dataset.size; document.getElementById('detailSelectedSize').textContent=`✅ ${selectedSize}`; }
+        function changeDetailQuantity(d) { const i=document.getElementById('detailQuantity'); if(i){let v=parseInt(i.value)+d; if(v<1)v=1; i.value=v;} }
+
+        function addDetailToCart() {
+            if(!currentProductDetail) return;
+            const q=parseInt(document.getElementById('detailQuantity')?.value||1);
+            let desc=currentProductDetail.desc;
+            if(selectedColor) desc+=` | 🎨 ${selectedColor.name}`;
+            if(selectedShape) desc+=` | 📐 ${selectedShape}`;
+            if(selectedSize) desc+=` | 📏 ${selectedSize}`;
+            cart.push({...currentProductDetail,id:Date.now(),desc,quantity:q,color:selectedColor,shape:selectedShape,size:selectedSize,originalId:currentProductDetail.id});
+            updateCartUI(); showToast(`✅ "${currentProductDetail.name}" أضيف إلى السلة!`);
+        }
+        function orderDetailViaWhatsapp() {
+            if(!currentProductDetail) return;
+            let m=`مرحباً فلورا! 🌸\n\n📦 ${currentProductDetail.name}\n💰 ${currentProductDetail.price.toLocaleString()} د.ج`;
+            if(selectedColor) m+=`\n🎨 ${selectedColor.name}`;
+            if(selectedShape) m+=`\n📐 ${selectedShape}`;
+            if(selectedSize) m+=`\n📏 ${selectedSize}`;
+            m+='\n\nالاسم:\nالعنوان:\nالهاتف:';
+            window.open(`https://wa.me/213555123456?text=${encodeURIComponent(m)}`,'_blank');
+        }
+
+        function renderCustomizeOptions() {
+            document.getElementById('customizeColorSection').innerHTML=`<h3 class="text-xl font-bold text-white mb-4"><span class="text-[#c4a882] text-2xl">2.</span> اختر اللون</h3><div class="flex flex-wrap gap-2">${colors.map(c=>`<div class="color-swatch" style="background:${c.hex};${c.name==='أبيض'?'border:2px solid #555;':''}" data-color="${c.name}" data-hex="${c.hex}" onclick="selectCustomColor(this)" title="${c.name}"></div>`).join('')}</div><p class="text-[#8a847c] text-xs mt-3" id="selectedColorText">لم تختر لوناً</p>`;
+            document.getElementById('customizeShapeSection').innerHTML=`<h3 class="text-xl font-bold text-white mb-4"><span class="text-[#c4a882] text-2xl">3.</span> اختر الشكل</h3><div class="grid grid-cols-2 md:grid-cols-4 gap-2">${shapes.map(s=>`<div class="shape-chip" data-shape="${s}" onclick="selectCustomShape(this)">${getShapeEmoji(s)} ${s}</div>`).join('')}</div><p class="text-[#8a847c] text-xs mt-3" id="selectedShapeText">لم تختر شكلاً</p>`;
+            document.getElementById('customizeSizeSection').innerHTML=`<h3 class="text-xl font-bold text-white mb-4"><span class="text-[#c4a882] text-2xl">4.</span> اختر الحجم</h3><div class="flex flex-wrap gap-2"><div class="size-chip" data-size="صغير" onclick="selectCustomSize(this)">صغير</div><div class="size-chip" data-size="وسط" onclick="selectCustomSize(this)">وسط</div><div class="size-chip" data-size="كبير" onclick="selectCustomSize(this)">كبير</div><div class="size-chip" data-size="فاخر" onclick="selectCustomSize(this)">فاخر</div></div><p class="text-[#8a847c] text-xs mt-3" id="selectedSizeText">لم تختر حجماً</p>`;
+        }
+
+        function selectCustomColor(el) { document.querySelectorAll('#customizeColorSection .color-swatch').forEach(o=>o.classList.remove('picked')); el.classList.add('picked'); selectedColor={name:el.dataset.color,hex:el.dataset.hex}; document.getElementById('selectedColorText').textContent=`✅ ${selectedColor.name}`; document.getElementById('selectedColorText').style.color=selectedColor.hex; updateCustomPreview(); }
+        function selectCustomShape(el) { document.querySelectorAll('#customizeShapeSection .shape-chip').forEach(o=>o.classList.remove('chosen')); el.classList.add('chosen'); selectedShape=el.dataset.shape; document.getElementById('selectedShapeText').textContent=`✅ ${selectedShape}`; updateCustomPreview(); }
+        function selectCustomSize(el) { document.querySelectorAll('#customizeSizeSection .size-chip').forEach(o=>o.classList.remove('chosen')); el.classList.add('chosen'); selectedSize=el.dataset.size; document.getElementById('selectedSizeText').textContent=`✅ ${selectedSize}`; updateCustomPreview(); }
+        function updateCustomPreview() {
+            const p=document.getElementById('customProduct')?.value, s=document.getElementById('customSummary'), c=document.getElementById('summaryContent');
+            if(!s||!c)return;
+            if(p||selectedColor||selectedShape||selectedSize){s.classList.remove('hidden');c.innerHTML=`<p>📦 <strong>المنتج:</strong> ${p||'---'}</p><p>🎨 <strong>اللون:</strong> <span style="color:${selectedColor?.hex||'#8a847c'}">${selectedColor?.name||'---'}</span></p><p>📐 <strong>الشكل:</strong> ${selectedShape||'---'}</p><p>📏 <strong>الحجم:</strong> ${selectedSize||'---'}</p>`;}
+            else{s.classList.add('hidden');}
+        }
+        function addCustomToCart() {
+            const p=document.getElementById('customProduct')?.value, n=document.getElementById('customNotes')?.value, card=document.getElementById('customCard')?.value;
+            if(!p){showToast('⚠️ اختر المنتج');return;}
+            cart.push({id:Date.now(),name:`${p} (مخصص)`,desc:`🎨${selectedColor?.name||''} | 📐${selectedShape||''} | 📏${selectedSize||''}${card?' | 💌 '+card:''}${n?' | 📝 '+n:''}`,price:0,image:'https://placehold.co/400x400/161618/c4a882?text=🎨',category:'custom',color:selectedColor,shape:selectedShape,size:selectedSize,notes:n,card:card,quantity:1});
+            updateCartUI();showToast('✅ تمت إضافة الطلب المخصص!');
+        }
+        function orderCustomViaWhatsapp() {
+            const p=document.getElementById('customProduct')?.value;
+            if(!p){showToast('⚠️ اختر المنتج');return;}
+            let m=`مرحباً فلورا! 🌸\n\nطلب مخصص:\n📦 ${p}`;
+            if(selectedColor)m+=`\n🎨 ${selectedColor.name}`;
+            if(selectedShape)m+=`\n📐 ${selectedShape}`;
+            if(selectedSize)m+=`\n📏 ${selectedSize}`;
+            const card=document.getElementById('customCard')?.value, n=document.getElementById('customNotes')?.value;
+            if(card)m+=`\n💌 بطاقة: ${card}`;
+            if(n)m+=`\n📝 ${n}`;
+            m+='\n\nالاسم:\nالعنوان:\nالهاتف:';
+            window.open(`https://wa.me/213555123456?text=${encodeURIComponent(m)}`,'_blank');
+        }
+
+        function filterProducts(filter,btn){currentFilter=filter;document.querySelectorAll('.cat-pill').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderProducts(filter);}
+        function addToCart(pid){const p=products.find(x=>x.id===pid);if(!p)return;const ex=cart.find(i=>i.originalId===pid&&!i.color);if(ex)ex.quantity++;else cart.push({...p,quantity:1,originalId:pid});updateCartUI();showToast('✅ تمت الإضافة!');}
+        function removeFromCart(cid){cart=cart.filter(i=>i.id!==cid);updateCartUI();}
+        function updateCartUI(){
+            const totalItems=cart.reduce((s,i)=>s+i.quantity,0);
+            document.getElementById('cartBadge').textContent=totalItems;
+            const ci=document.getElementById('cartItems'),ct=document.getElementById('cartTotal');
+            if(cart.length===0){ci.innerHTML='<p class="text-[#5c5852] text-center py-16">السلة فارغة</p>';ct.classList.add('hidden');}
+            else{
+                ci.innerHTML=cart.map(i=>`
+                    <div class="flex gap-4 bg-[#111] p-5 rounded-xl border border-[#222]">
+                        <img src="${i.image}" class="w-20 h-20 rounded-xl object-cover" onerror="this.src='https://placehold.co/80x80/161618/c4a882?text=🌸'">
+                        <div class="flex-1"><p class="text-white font-bold">${i.name}</p><p class="text-[#c4a882] text-xs mt-1">${i.desc} ${i.price>0?'| '+i.price.toLocaleString()+' د.ج':'| حسب الطلب'}</p>${i.color?`<p class="text-xs mt-1" style="color:${i.color.hex}">🎨${i.color.name} | 📐${i.shape||''} | 📏${i.size||''}</p>`:''}<p class="text-[#8a847c] text-xs mt-1">الكمية: ${i.quantity}</p></div>
+                        <button onclick="removeFromCart(${i.id})" class="text-red-400 hover:text-red-300 text-xl">✕</button>
+                    </div>`).join('');
+                ct.classList.remove('hidden');
+                const total=cart.reduce((s,i)=>s+(i.price*i.quantity),0);
+                document.getElementById('totalPrice').textContent=total>0?total.toLocaleString()+' د.ج':'حسب الاتفاق';
+                const ot=cart.map(i=>{let l=`• ${i.name} (${i.quantity}x)`;if(i.price>0)l+=` - ${(i.price*i.quantity).toLocaleString()} د.ج`;if(i.color)l+=` [${i.color.name}|${i.shape||''}|${i.size||''}]`;return l;}).join('\n');
+                document.getElementById('whatsappOrderBtn').href=`https://wa.me/213555123456?text=${encodeURIComponent(`مرحباً فلورا! 🌸\n\nأريد طلب:\n${ot}\n\nالمجموع: ${total>0?total.toLocaleString()+' د.ج':'حسب الاتفاق'}\n\nالاسم:\nالعنوان:\nالهاتف:`)}`;
             }
         }
-
-        // ==================== FILTER BUTTONS ====================
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.filter-btn').forEach(b => {
-                    b.classList.remove('bg-[#c4a882]', 'text-[#0a0a0b]');
-                    b.classList.add('border', 'border-[#2a2a2e]', 'text-[#8a847c]');
-                });
-                this.classList.add('bg-[#c4a882]', 'text-[#0a0a0b]');
-                this.classList.remove('border', 'border-[#2a2a2e]', 'text-[#8a847c]');
-                currentFilter = this.dataset.filter;
-                visibleProducts = 8;
-                renderProducts(currentFilter, visibleProducts);
-            });
-        });
-
-        document.getElementById('load-more-btn')?.addEventListener('click', function() {
-            visibleProducts += 4;
-            renderProducts(currentFilter, visibleProducts);
-        });
-
-        // ==================== NAVIGATION ====================
-        const nav = document.getElementById('nav');
-        if (nav && lenis) {
-            lenis.on('scroll', ({ scroll }) => {
-                if (scroll > 50) {
-                    nav.style.background = 'rgba(10, 10, 11, 0.95)'; nav.style.backdropFilter = 'blur(20px)';
-                    nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)'; nav.style.borderBottom = '1px solid #1a1a1d';
-                } else {
-                    nav.style.background = 'transparent'; nav.style.backdropFilter = 'none';
-                    nav.style.boxShadow = 'none'; nav.style.borderBottom = 'none';
-                }
-            });
+        function toggleCart(){document.getElementById('cartOverlay').classList.toggle('show');}
+        function showToast(msg){const t=document.getElementById('successToast');t.textContent=msg;t.classList.add('visible');setTimeout(()=>t.classList.remove('visible'),3000);}
+        function submitContact(){
+            const name=document.getElementById('contactName')?.value,phone=document.getElementById('contactPhone')?.value,msg=document.getElementById('contactMessage')?.value,subj=document.getElementById('contactSubject')?.value;
+            if(!name||!phone||!msg){showToast('⚠️ املأ الحقول المطلوبة');return;}
+            window.open(`https://wa.me/213555123456?text=${encodeURIComponent(`مرحباً فلورا!\n\n👤 ${name}\n📞 ${phone}\n📌 ${subj||'استفسار'}\n📝 ${msg}`)}`,'_blank');
+            ['contactName','contactPhone','contactEmail','contactMessage'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+            showToast('✅ تم الإرسال!');
         }
+        function copyPhone(){navigator.clipboard.writeText('+213 555 123 456').then(()=>showToast('📋 تم نسخ الرقم!'));}
 
-        const pages = document.querySelectorAll('.page');
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        function navigateToPage(pageName) {
-            pages.forEach(page => page.classList.remove('active'));
-            const targetPage = document.getElementById(`page-${pageName}`);
-            if (targetPage) { targetPage.classList.add('active'); if (pageName === 'shop') { renderProducts(currentFilter, visibleProducts); } }
-            navLinks.forEach(link => {
-                if (link.dataset.page === pageName) {
-                    link.classList.add('text-[#d4c4ab]', 'border-b-2', 'border-[#c4a882]'); link.classList.remove('text-[#8a847c]');
-                } else {
-                    link.classList.remove('text-[#d4c4ab]', 'border-b-2', 'border-[#c4a882]'); link.classList.add('text-[#8a847c]');
-                }
-            });
-            lenis?.scrollTo(0, { immediate: true });
-        }
-
-        navLinks.forEach(link => { link.addEventListener('click', (e) => { e.preventDefault(); const pageName = link.dataset.page; if (pageName) navigateToPage(pageName); }); });
-        document.getElementById('logo-home')?.addEventListener('click', () => navigateToPage('home'));
-        document.getElementById('footer-logo')?.addEventListener('click', () => navigateToPage('home'));
-
-        // ==================== MAGNETIC BUTTONS ====================
-        document.querySelectorAll('.magnetic-wrap').forEach(wrap => {
-            const btn = wrap.querySelector('button'); if (!btn) return;
-            wrap.addEventListener('mousemove', (e) => {
-                const rect = wrap.getBoundingClientRect(); const x = e.clientX - rect.left - rect.width / 2; const y = e.clientY - rect.top - rect.height / 2;
-                btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
-            });
-            wrap.addEventListener('mouseleave', () => { btn.style.transform = 'translate(0px, 0px)'; });
-        });
-
-        // ==================== 3D CARD TILT ====================
-        document.querySelectorAll('.card-3d').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect(); const x = e.clientX - rect.left; const y = e.clientY - rect.top;
-                const centerX = rect.width / 2; const centerY = rect.height / 2;
-                const rotateX = (y - centerY) / centerY * -8; const rotateY = (x - centerX) / centerX * 8;
-                card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-            });
-            card.addEventListener('mouseleave', () => { card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)'; });
-        });
-
-        // ==================== CONTACT FORM ====================
-        document.getElementById('submit-contact')?.addEventListener('click', function() {
-            const name = document.getElementById('contact-name')?.value;
-            const phone = document.getElementById('contact-phone')?.value;
-            const message = document.getElementById('contact-message')?.value;
-            if (!name || !phone || !message) { showToast('الرجاء ملء جميع الحقول المطلوبة'); return; }
-            showModal('تم الإرسال! ✉️', `شكراً ${name}! سنتواصل معك قريباً على الرقم ${phone}`, '📨');
-            document.getElementById('contact-name').value = ''; document.getElementById('contact-phone').value = ''; document.getElementById('contact-message').value = '';
-        });
-
-        document.getElementById('watch-gallery-btn')?.addEventListener('click', function() { navigateToPage('shop'); showToast('تم فتح معرض المنتجات'); });
-
-        // ==================== REVEAL ANIMATIONS ====================
-        gsap.registerPlugin(ScrollTrigger);
-        function initRevealAnimations() {
-            document.querySelectorAll('.reveal-line').forEach((line) => {
-                ScrollTrigger.create({ trigger: line, start: 'top bottom-=30', onEnter: () => line.classList.add('visible') });
-            });
-        }
-        initRevealAnimations();
-
-        // ==================== INITIAL RENDER ====================
-        renderProducts('all', 8);
-        window.removeFromCart = removeFromCart;
-
-        console.log('%c🌙 %cفلورا إكسكويزيت %c| %cجميع الصور والمنتجات تعمل الآن! ✨',
-            'font-size:18px;', 'color:#c4a882;font-size:14px;', '', 'color:#8a847c;');
+        renderProducts('all');
+        renderCustomizeOptions();
     </script>
 </body>
 </html>
